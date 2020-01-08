@@ -1,3 +1,5 @@
+import { AuthModule } from './auth/auth/auth.module';
+import { SharedModule } from './shared/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -15,7 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule,
+    AuthModule
   ],
   providers: [
     StatusBar,
