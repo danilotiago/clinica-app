@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Menu } from './menu';
+import { menuList } from './menu-list';
+
 @Component({
   selector: 'clinica-menu',
   templateUrl: './menu.component.html',
@@ -7,18 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  public appPages: any = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }
-  ];
+  protected menuList: Menu[] = menuList;
 
   constructor() { }
 
