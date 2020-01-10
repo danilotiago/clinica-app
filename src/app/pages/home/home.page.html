@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="clinica-primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,16 +10,44 @@
 </ion-header>
 
 <ion-content>
-  <ion-toolbar>
-    <ion-card color="primary">
-      <ion-card-header class="card-title">
-        <ion-card-title>Agendamentos</ion-card-title>
-      </ion-card-header>
-      <ion-card-content class="card-subtitle">
-        <p>
-          Clique aqui para fazer agendamentos.
-        </p>
-      </ion-card-content>
-    </ion-card>
-  </ion-toolbar>
+  <ion-card color="clinica-secondary">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card-title>Agendamentos</ion-card-title>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="grid" size="large" class="card-icon" float-right></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content class="card-subtitle">
+      <p>
+        Clique aqui para fazer agendamentos.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="clinica-secondary">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card-title>Usuários</ion-card-title>
+          </ion-col>
+          <ion-col>
+            <ion-icon name="contacts" size="large" class="card-icon" float-right></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content class="card-subtitle">
+      <p>
+        Clique aqui para gerenciar usuários/clientes.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
