@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HomeProfessionalPage } from './home-professional.page';
+import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    SubHeaderModule,
     HomeProfessionalRoutingModule
   ],
   declarations: [HomeProfessionalPage],
