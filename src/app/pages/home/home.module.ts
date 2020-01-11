@@ -1,23 +1,17 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { HomeClientModule } from './client/home-client.module';
+import { HomeProfessionalModule } from './professional/home-professional.module';
+import { HomeRoutingModule } from './home.routing.module';
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
-
-import { HomePage } from './home.page';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
-  ],
-  declarations: [HomePage]
+    imports: [
+        CommonModule,
+        IonicModule,
+        HomeRoutingModule,
+        HomeProfessionalModule,
+        HomeClientModule
+    ]
 })
-export class HomePageModule {}
+export class HomeModule { }
