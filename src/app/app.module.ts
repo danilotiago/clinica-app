@@ -11,6 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './pages/home/home.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule,
     AuthModule,
     MenuModule,
-    TabsModule
+    TabsModule,
+    HomeModule
   ],
   providers: [
     StatusBar,
