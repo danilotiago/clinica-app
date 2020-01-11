@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HomeProfessionalPage } from './home-professional.page';
 import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
+import { TimelineModule } from 'src/app/shared/timeline/timeline.module';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
     HomeProfessionalRoutingModule,
     ServicesListModule,
     RememberAlertModule,
-    TitleContentModule
+    TitleContentModule,
+    ServicesListModule  
   ],
   declarations: [HomeProfessionalPage],
   exports: [HomeProfessionalPage]

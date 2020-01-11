@@ -1,0 +1,233 @@
+$primary: #3F51B5;
+$dark-primary: #303F9F;
+$light-primary: #C5CAE9;
+$text: #FFFFFF;
+$primary-text: #212121;
+$secondary-text: #757575;
+$accent: #FF4081;
+
+html, body {
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Roboto';
+  font-size: 17px;
+  font-weight: 400;
+  background-color: #eee;
+}
+
+h1 {
+  font-size: 200%;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 400;
+}
+
+.timeline {
+
+	position: relative;
+
+	&::before {
+		content: '';
+		background: rgba(234, 46, 90, .2);
+		width: 5px;
+		height: 95%;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+.timeline-item {
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+.timeline-content {
+	position: relative;
+	width: 45%;
+	padding: 10px 30px;
+	border-radius: 4px;
+	background: #f5f5f5;
+}
+
+.timeline-img {
+	width: 30px;
+	height: 30px;
+	background: var(--ion-color-clinica-secondary);
+	border-radius: 50%;
+	position: absolute;
+	left: 50%;
+	margin-top: 25px;
+	margin-left: -15px;
+}
+
+.bnt-more {
+	background: #dfdfdf;
+	color: #000000;
+	padding: 6px 20px;
+	text-transform: uppercase;
+	font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+	right: 0;
+    display: inline-block;
+    margin-top: 1rem;
+
+	&:hover {
+		background: darken($primary, 10%);
+		color: $text;
+        text-decoration: underline;
+	}
+
+}
+
+.timeline-card {
+	padding: 0!important;
+
+	p {
+		padding: 0 20px;
+	}
+
+	a {
+		margin-left: 20px;
+	}
+}
+
+blockquote {
+	margin-top: 30px;
+	color: $secondary-text;
+	border-left-color: $primary;
+	padding: 0 20px;
+}
+
+.title {
+    margin-bottom: 3rem;
+}
+
+.date {
+	background: var(--ion-color-clinica-secondary);
+	display: inline-block;
+	color: $text;
+	padding: 10px;
+	position: absolute;
+    top: 0;
+    width: 50%;
+    right: 0;
+    height: 30px;
+    text-align: center;
+    padding-top: 0.3rem;
+}
+
+.status-agendado {
+    background: $primary;
+	display: inline-block;
+	color: $text;
+    position: absolute;
+    width: 50%;
+	top: 0;
+    left: 0;
+    height: 30px;
+    text-align: center;
+    padding-top: 0.3rem;
+}
+
+.status-remarcado {
+    background: var(--ion-color-warning);
+	display: inline-block;
+	color: $text;
+    position: absolute;
+    width: 50%;
+	top: 0;
+    left: 0;
+    height: 30px;
+    text-align: center;
+    padding-top: 0.3rem;
+}
+
+.status-cancelado {
+    background: var(--ion-color-danger);
+	display: inline-block;
+	color: $text;
+    position: absolute;
+    width: 50%;
+	top: 0;
+    left: 0;
+    height: 30px;
+    text-align: center;
+    padding-top: 0.3rem;
+}
+
+.status-concluido {
+    background: var(--ion-color-success);
+	display: inline-block;
+	color: $text;
+    position: absolute;
+    width: 50%;
+	top: 0;
+    left: 0;
+    height: 30px;
+    text-align: center;
+    padding-top: 0.3rem;
+}
+
+.agendamento-content {
+    margin-left: -1rem;
+}
+
+.client-name {
+    margin-top: -1.2rem;
+}
+
+.professional-name {
+    margin-top: -0.6rem;
+}
+
+.data-agendamento {
+    margin-top: -0.6rem;
+    margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+
+	.timeline {
+
+		&::before {
+			left: 50px;
+		}
+
+		.timeline-img {
+			left: 50px;
+		}
+
+		.timeline-content {
+			max-width: 60%;
+			width: auto;
+			margin-left: 6rem;
+		}
+
+		.timeline-item {
+            .timeline-content {
+                float: none;
+
+            }
+            .timeline-content {
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    border-style: solid;
+                    width: 0;
+                    height: 0;
+                    top: 30px;
+                    left: -15px;
+                    border-width: 10px 15px 10px 0;
+                    border-color: transparent #f5f5f5 transparent transparent;
+                }
+            }
+		}
+	}
+	
+}
