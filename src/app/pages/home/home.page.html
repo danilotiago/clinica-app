@@ -1,68 +1,92 @@
 <ion-header>
-  <ion-toolbar color="clinica-primary">
+  <ion-toolbar color="white">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Carol Podologia
+      Início
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-text float-right class="last-access">Último acesso em 12/01/2020</ion-text>
-  <br>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title class="ion-text-center">
-        <h1 class="ion-text-center welcome-name">Olá Maria!</h1>
-      </ion-card-title>
-      <ion-card-subtitle class="ion-text-center">Bem vindo(a) clínica de estética e podologia Carol Podologia.</ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content>
-      <p class="ion-text-center">Você tem 38 agendamentos nos últimos 12 meses</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img class="logo" src="/assets/imgs/logo.svg">
+      </ion-col>
+      <ion-col>
+        <div class="text-icon">
+          <h1 class="title-logo">Carol</h1>
+          <h3 class="subtitle-logo">Podologia</h3>
+        </div>
+      </ion-col>
 
-  <ion-card color="clinica-secondary">
-    <ion-card-header>
-      <ion-grid>
+      <ion-col>
         <ion-row>
           <ion-col>
-            <ion-card-title>Agendamentos</ion-card-title>
-          </ion-col>
-          <ion-col>
-            <ion-icon name="grid" size="large" class="card-icon" float-right></ion-icon>
+            <ion-avatar class="icon-avatar" float-right>
+              <img class="avatar-img" src="/assets/imgs/avatar-woman.svg">
+            </ion-avatar>
           </ion-col>
         </ion-row>
-      </ion-grid>
-    </ion-card-header>
-    <ion-card-content class="card-subtitle">
-      <p>
-        Clique aqui para fazer agendamentos.
-      </p>
-    </ion-card-content>
-  </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="ion-text-center">
+    <ion-text class="ion-text-uppercase icon-subtitle">Olá Maria !</ion-text>
+  </div>
 
-  <ion-card color="clinica-secondary">
-    <ion-card-header>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-card-title>Usuários</ion-card-title>
-          </ion-col>
-          <ion-col>
-            <ion-icon name="contacts" size="large" class="card-icon" float-right></ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-header>
-    <ion-card-content class="card-subtitle">
-      <p>
-        Clique aqui para gerenciar usuários/clientes.
-      </p>
-    </ion-card-content>
+  <ion-searchbar class="ion-padding" placeholder="O QUE VOCÊ PRECISA HOJE?"></ion-searchbar>
+
+
+  <ion-list>
+    <ion-row>
+      <ion-card class="item-menu">
+        <div class="ion-text-center">
+          <img class="item-menu-img" src="/assets/imgs/podology.svg">
+          <ion-card-content class="item-text">Podologia</ion-card-content>
+        </div>
+      </ion-card>
+
+      <ion-card class="item-menu">
+        <div class="ion-text-center">
+          <img class="item-menu-img" src="/assets/imgs/depilation.svg">
+          <ion-card-content class="item-text">Depilação</ion-card-content>
+        </div>
+      </ion-card>
+      <ion-card class="item-menu">
+        <div class="ion-text-center">
+          <img class="item-menu-img" src="/assets/imgs/esthetician.svg">
+          <ion-card-content class="item-text">Esteticista</ion-card-content>
+        </div>
+      </ion-card>
+      <ion-card class="item-menu">
+        <div class="ion-text-center">
+          <img class="item-menu-img" src="/assets/imgs/massage.svg">
+          <ion-card-content class="item-text">Massoterapia</ion-card-content>
+        </div>
+      </ion-card>
+      <ion-card class="item-menu">
+        <div class="ion-text-center">
+          <img class="item-menu-img" src="/assets/imgs/nutricionist.svg">
+          <ion-card-content class="item-text">Nutricionista</ion-card-content>
+        </div>
+      </ion-card>
+    </ion-row>
+  </ion-list>
+
+  <ion-list class="ion-padding">
+    <ion-item>
+      <ion-label class="alert-text ion-text-uppercase">Para te lembrar</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-card class="card-alert">
+    <div class="ion-text-center">
+      <ion-card-content class="item-text">Você tem 1 agendamento marcado pra amanhã com a doutora Carol</ion-card-content>
+    </div>
   </ion-card>
 
 </ion-content>

@@ -1,5 +1,6 @@
-ion-card {
-  box-shadow: none;
+ion-avatar { 
+  width: 80px;
+  height: 80px;
 }
 
 .card-subtitle {
@@ -11,15 +12,71 @@ ion-card {
   margin-right: -1rem;
 }
 
-.last-access {
-  margin-top: 0.3rem;
-  margin-right: 0.3rem;
-  font-size: 12px;
-  color: #acacac;
-  font-style: italic;
-}
-
 .welcome-name {
   margin-top: 0.7rem;
   margin-bottom: 1.5rem;
+}
+
+.avatar-img {
+  border: 3px solid var(--ion-color-clinica-secondary);
+}
+
+.icon-avatar {
+  margin-right: 1rem;
+}
+
+.icon-subtitle {
+  font-weight: 900;
+  font-size: 1.3rem;
+  color: var(--ion-color-clinica-secondary);
+}
+
+.logo {
+  width: 50px;
+  height: 85px;
+  margin-top: 0.5rem;
+}
+
+.title-logo {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--ion-color-clinica-secondary);
+}
+
+.text-icon {
+  margin-left: -4rem;
+  margin-top: 2rem;
+}
+
+.subtitle-logo {
+  font-weight: 900;
+  margin-top: -0.7rem;
+  font-size: 1rem;
+  color: var(--ion-color-clinica-secondary);
+}
+
+.item-menu {
+  width: 7rem;
+}
+
+.item-menu-img {
+  width: 3rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item-text {
+  padding: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.alert-text {
+  color: var(--ion-color-clinica-secondary);
+}
+
+.card-alert {
+  margin-bottom: 7rem; // corrigir quando as tabs forem corrigidas // hack para nao esconder os alertas atras das tabs
+  border-left: 7px solid var(--ion-color-clinica-secondary);
 }
