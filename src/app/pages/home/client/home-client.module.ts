@@ -1,3 +1,4 @@
+import { ServicesListModule } from './../../../shared/services-list/services-list.module';
 import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,7 +14,8 @@ import { HomeClientRoutingModule } from './home-client.routing.module';
     FormsModule,
     IonicModule,
     HomeClientRoutingModule,
-    SubHeaderModule
+    SubHeaderModule,
+    ServicesListModule
   ],
   declarations: [HomeClientPage]
 })
