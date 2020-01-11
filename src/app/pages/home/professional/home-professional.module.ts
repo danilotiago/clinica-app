@@ -1,3 +1,4 @@
+import { RememberAlertModule } from './../../../shared/remember-alert/remember-alert.module';
 import { ServicesListModule } from './../../../shared/services-list/services-list.module';
 import { HomeProfessionalRoutingModule } from './home-professional.routing.module';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,8 @@ import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
     IonicModule,
     SubHeaderModule,
     HomeProfessionalRoutingModule,
-    ServicesListModule
+    ServicesListModule,
+    RememberAlertModule
   ],
   declarations: [HomeProfessionalPage],
   exports: [HomeProfessionalPage]
