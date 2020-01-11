@@ -1,3 +1,4 @@
+import { TitleContentModule } from './../../../shared/title-content/title-content.module';
 import { RememberAlertModule } from './../../../shared/remember-alert/remember-alert.module';
 import { ServicesListModule } from './../../../shared/services-list/services-list.module';
 import { HomeProfessionalRoutingModule } from './home-professional.routing.module';
@@ -16,7 +17,8 @@ import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
     SubHeaderModule,
     HomeProfessionalRoutingModule,
     ServicesListModule,
-    RememberAlertModule
+    RememberAlertModule,
+    TitleContentModule
   ],
   declarations: [HomeProfessionalPage],
   exports: [HomeProfessionalPage]

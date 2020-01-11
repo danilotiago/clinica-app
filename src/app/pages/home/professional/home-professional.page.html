@@ -13,10 +13,12 @@
 
   <clinica-sub-header></clinica-sub-header>
 
-  <ion-searchbar class="ion-padding" placeholder="O QUE VOCÊ PRECISA HOJE?"></ion-searchbar>
+  <ion-list class="ion-padding label-graph">
+    <clinica-title-content title="Agendamentos realizados nos últimos 6 meses"></clinica-title-content>
+  </ion-list>
 
-  <clinica-services-list></clinica-services-list>
-
-  <clinica-remember-alert></clinica-remember-alert>
+  <div class="ion-padding">
+    <canvas #lastConsultations ></canvas>
+  </div>
 
 </ion-content>
