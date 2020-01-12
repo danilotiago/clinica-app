@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-sigin',
+    selector: 'clinica-sigin',
     templateUrl: './sigin.page.html',
     styleUrls: ['./sigin.page.scss'],
 })

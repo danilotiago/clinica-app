@@ -226,6 +226,12 @@
   border-radius: 4px;
 }
 
+.label-login {
+  ion-icon {
+    color: var(--ion-color-clinica-secondary);
+  }
+}
+
 // Animate CSS
 .animated {
   animation-duration: 1s;
