@@ -1,9 +1,36 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>forgotpass</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content padding class="animated fadeIn login">
+  <div class="forgotpass-content">
 
-<ion-content>
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"><img src="/assets/imgs/logo.svg"></div>
+      <h2 ion-text class="text-secondary">
+        <strong>Carol</strong> Podologia
+      </h2>
+    </div>
 
+    <form class="list-form">
+      <ion-item>
+        <ion-label class="label-login" position="floating">
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          E-mail
+        </ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+    </form>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button class="btn-clinica" ion-button icon-start block color="dark" tappable (click)="forgotPass()">
+            Enviar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div text-center margin-top>
+      <span class="message"></span>
+    </div>
+
+  </div>
 </ion-content>

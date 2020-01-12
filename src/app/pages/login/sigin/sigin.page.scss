@@ -1,79 +1,43 @@
-// style for auth pages
-.auth-page {
-  background-color: #fff;
-  &::after {
-    content: "";
-    background-size: cover;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: 0;
-  }
+.scroll-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //background: rgba(50, 10, 92, .4);
 
-  .btn-sigin {
-    padding: 10px;
-    background-color: var(--ion-color-clinica-secondary);
-    color: white;
-    text-align: center;
-    margin-top: 0.6rem;
-    border-radius: 4px;
-  }
+  .login-content {
+    width: 86%;
 
-  ion-label {
-    ion-icon {
-      color: var(--ion-color-clinica-secondary);
+    .logo {
+      width: 30px;
+      height: 30px;
+      margin: 20px auto 0;
+      border-radius: 10%;
+      background-size: 100%;
     }
-  }
 
-  ion-item:focus {
-    ion-label {
-      color: var(--ion-color-clinica-secondary);
-    }
-  }
+    .list-form {
+      padding: 0;
+      margin-bottom: 0;
 
-  .scroll-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    //background: rgba(50, 10, 92, .4);
-
-    .login-content {
-      width: 86%;
-
-      .logo {
-        width: 30px;
-        height: 30px;
-        margin: 20px auto 0;
-        border-radius: 10%;
-        background-size: 100%;
-      }
-
-      .list-form {
+      ion-item {
+        background: none;
         padding: 0;
-        margin-bottom: 0;
 
-        ion-item {
-          background: none;
-          padding: 0;
+        &:first-child {
+          border-top: none;
+        }
 
-          &:first-child {
-            border-top: none;
-          }
+        &:after {
+          display: none;
+        }
 
-          &:after {
-            display: none;
-          }
+        ion-label {
+          font-size: 1em;
+          color: var(--ion-color-clinica-secondary) !important;
+        }
 
-          ion-label {
-            font-size: 1em;
-            color: var(--ion-color-clinica-secondary) !important;
-          }
-
-          input {
-            color: var(--ion-color-clinica-secondary);
-          }
+        input {
+          color: var(--ion-color-clinica-secondary);
         }
       }
     }
