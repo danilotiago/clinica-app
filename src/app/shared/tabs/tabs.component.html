@@ -1,16 +1,26 @@
-<ion-toolbar>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-button color="white" expand="full" class="tabs-button">
-          <ion-icon slot="icon-only" name="home" size="large"></ion-icon>
-        </ion-button>
-      </ion-col>
-      <ion-col>
-        <ion-button color="white" expand="full" class="tabs-button">
-          <ion-icon slot="icon-only" name="person" size="large"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-toolbar>
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    
+    <ion-tab-button tab="map">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Início</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="schedule">
+      <ion-icon name="paper"></ion-icon>
+      <ion-label>Agendamentos</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="speakers">
+      <ion-icon name="list"></ion-icon>
+      <ion-label>Serviços</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about">
+      <ion-icon name="call"></ion-icon>
+      <ion-label>Informações</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>
