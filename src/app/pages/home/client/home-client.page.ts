@@ -30,7 +30,7 @@ export class HomeClientPage {
       name: 'Massoterapia'
     },
     {
-      logo: '/assets/imgs/nutricionist.svg',
+      logo: '/assets/imgs/professional.svg',
       path: '#',
       name: 'Nutricionista'
     }
