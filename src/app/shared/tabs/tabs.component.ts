@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
     selector: 'clinica-tabs',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsComponent implements OnInit {
 
-    constructor() {
+    showTabs: boolean = true;
+    constructor(private router: Router) {
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationEnd) {
+                this.showTabs = !event.url.includes("/login");
+            }
+        })
+    }
 
 }

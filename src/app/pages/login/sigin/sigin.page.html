@@ -1,4 +1,4 @@
-<ion-content padding class="animated fadeIn login auth-page">
+<ion-content padding class="animated fadeIn login">
   <div class="login-content">
 
     <div padding-horizontal text-center class="animated fadeInDown">
@@ -34,7 +34,8 @@
           </button>
         </ion-col>
         <ion-col>
-          <p class="vertical-middle no-padding" text-right ion-text color="secondary" tappable (click)="forgotPass()">
+          <p class="vertical-middle no-padding" text-right ion-text color="secondary" tappable
+            [routerLink]="['/login','forgotpass']">
             <strong>Esqueceu sua senha?</strong>
           </p>
         </ion-col>
@@ -42,7 +43,8 @@
     </ion-grid>
 
     <div text-center margin-top>
-      <span ion-text color="secondary" tappable (click)="register()">Novo aqui? <strong>Registrar-se</strong></span>
+      <span ion-text color="secondary" tappable [routerLink]="['/login', 'register']">Novo aqui?
+        <strong>Registrar-se</strong></span>
     </div>
 
   </div>

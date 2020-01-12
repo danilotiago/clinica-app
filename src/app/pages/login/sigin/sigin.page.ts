@@ -12,5 +12,7 @@ export class SiginPage implements OnInit {
     ngOnInit() {
     }
 
-
+    sigin() {
+        // autenticacao
+    }
 }
