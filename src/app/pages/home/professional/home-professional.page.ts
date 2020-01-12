@@ -1,3 +1,4 @@
+import { ServiceItem } from './../../../shared/services-list/service-item.interface';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { Chart } from 'chart.js';
@@ -12,6 +13,24 @@ export class HomeProfessionalPage implements OnInit {
   @ViewChild('lastConsultations', { static: true }) lastConsultations: ElementRef;
 
   lastConsultationsChart: Chart;
+
+  serviceItens: ServiceItem[] = [
+    {
+      logo: '/assets/imgs/professional.svg',
+      path: '#',
+      name: 'Profissionais'
+    },
+    {
+      logo: '/assets/imgs/user.svg',
+      path: '#',
+      name: 'Pacientes'
+    },
+    {
+      logo: '/assets/imgs/calendar.svg',
+      path: '#',
+      name: 'Agendamentos'
+    }
+  ]
 
   constructor() {}
 
