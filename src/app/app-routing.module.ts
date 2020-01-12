@@ -7,26 +7,14 @@ const routes: Routes = [
         loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
     },
     {
+        path: 'login',
+        loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    },
+    {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
-    },
-    {
-        path: 'register',
-        loadChildren: () => import('./pages/login/register/register.module').then(m => m.RegisterPageModule)
-    },
-    {
-        path: 'forgotpass',
-        loadChildren: () => import('./pages/login/forgotpass/forgotpass.module').then(m => m.ForgotpassPageModule)
-    },
-    {
-        path: 'sigin',
-        loadChildren: () => import('./pages/login/sigin/sigin.module').then(m => m.SiginPageModule)
     }
-
-
-
-
 ];
 
 @NgModule({
