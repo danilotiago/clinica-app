@@ -1,4 +1,3 @@
-// style for auth pages
 .auth-page {
   background-color: #fff;
   &::after {
@@ -10,15 +9,6 @@
     right: 0;
     position: absolute;
     z-index: 0;
-  }
-
-  .btn-sigin {
-    padding: 10px;
-    background-color: var(--ion-color-clinica-secondary);
-    color: white;
-    text-align: center;
-    margin-top: 0.6rem;
-    border-radius: 4px;
   }
 
   ion-label {
