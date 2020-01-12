@@ -35,7 +35,7 @@ export class HomeProfessionalPage implements OnInit {
   constructor() {}
 
   ngOnInit() { 
-    this.createLastConsultationsChart();
+    //this.createLastConsultationsChart();
   }
 
   createLastConsultationsChart() {

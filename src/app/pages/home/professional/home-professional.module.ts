@@ -1,3 +1,4 @@
+import { TimelineModule } from './../../../shared/timeline/timeline.module';
 import { TitleContentModule } from './../../../shared/title-content/title-content.module';
 import { RememberAlertModule } from './../../../shared/remember-alert/remember-alert.module';
 import { ServicesListModule } from './../../../shared/services-list/services-list.module';
@@ -8,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { HomeProfessionalPage } from './home-professional.page';
 import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
-import { TimelineModule } from 'src/app/shared/timeline/timeline.module';
 
 @NgModule({
   imports: [
@@ -20,7 +20,8 @@ import { TimelineModule } from 'src/app/shared/timeline/timeline.module';
     ServicesListModule,
     RememberAlertModule,
     TitleContentModule,
-    ServicesListModule  
+    ServicesListModule,
+    TimelineModule 
   ],
   declarations: [HomeProfessionalPage],
   exports: [HomeProfessionalPage]

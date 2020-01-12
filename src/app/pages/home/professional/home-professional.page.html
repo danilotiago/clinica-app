@@ -21,11 +21,9 @@
   <clinica-services-list [serviceItens]="serviceItens"></clinica-services-list>
 
   <ion-list class="ion-padding label-graph">
-    <clinica-title-content title="Quantidade de agendamentos realizados nos últimos 6 meses"></clinica-title-content>
+    <clinica-title-content title="Últimos 4 agendamentos"></clinica-title-content>
   </ion-list>
-
-  <div class="ion-padding">
-    <canvas #lastConsultations ></canvas>
-  </div>
+  <div class="timeline-space"></div>
+  <clinica-timeline></clinica-timeline>
 
 </ion-content>
