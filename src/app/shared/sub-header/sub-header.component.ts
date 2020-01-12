@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'clinica-sub-header',
@@ -7,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubHeaderComponent implements OnInit {
 
+  @Input('showWelcome') showWelcome: boolean = false;
+
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }
