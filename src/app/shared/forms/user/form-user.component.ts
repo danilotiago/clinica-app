@@ -11,4 +11,7 @@ export class FormUserComponent implements OnInit {
 
   ngOnInit() {}
 
+  showCities(){
+    console.log("teste")
+  }
 }
