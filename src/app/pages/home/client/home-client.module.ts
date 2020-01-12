@@ -1,3 +1,6 @@
+import { RememberAlertModule } from './../../../shared/remember-alert/remember-alert.module';
+import { ServicesListModule } from './../../../shared/services-list/services-list.module';
+import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +14,10 @@ import { HomeClientRoutingModule } from './home-client.routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomeClientRoutingModule
+    HomeClientRoutingModule,
+    SubHeaderModule,
+    ServicesListModule,
+    RememberAlertModule
   ],
   declarations: [HomeClientPage]
 })

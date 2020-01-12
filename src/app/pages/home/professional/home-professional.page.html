@@ -4,107 +4,26 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Admin
+      Início
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <img class="logo" src="/assets/imgs/logo.svg">
-      </ion-col>
-      <ion-col>
-        <div class="text-icon">
-          <h1 class="title-logo">Carol</h1>
-          <h3 class="subtitle-logo">Podologia</h3>
-        </div>
-      </ion-col>
-
-      <ion-col>
-        <ion-row>
-          <ion-col>
-            <ion-avatar class="icon-avatar" float-right>
-              <img class="avatar-img" src="/assets/imgs/avatar-woman.svg">
-            </ion-avatar>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div class="ion-text-center">
-    <ion-text class="ion-text-uppercase icon-subtitle">Olá Maria !</ion-text>
-  </div>
-
-  <ion-searchbar class="ion-padding" placeholder="O QUE VOCÊ PRECISA HOJE?"></ion-searchbar>
+  <clinica-sub-header></clinica-sub-header>
 
 
-  <ion-list>
-    <ion-row>
-      <ion-col>
-        <ion-card class="item-menu">
-          <div class="ion-text-center">
-            <img class="item-menu-img" src="/assets/imgs/podology.svg">
-            <ion-card-content class="item-text">Podologia</ion-card-content>
-          </div>
-        </ion-card>
-      </ion-col>
-
-      <ion-col>
-        <ion-card class="item-menu">
-          <div class="ion-text-center">
-            <img class="item-menu-img" src="/assets/imgs/depilation.svg">
-            <ion-card-content class="item-text">Depilação</ion-card-content>
-          </div>
-        </ion-card>
-      </ion-col>
-
-      <ion-col>
-        <ion-card class="item-menu">
-          <div class="ion-text-center">
-            <img class="item-menu-img" src="/assets/imgs/esthetician.svg">
-            <ion-card-content class="item-text">Esteticista</ion-card-content>
-          </div>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-card class="item-menu">
-          <div class="ion-text-center">
-            <img class="item-menu-img" src="/assets/imgs/massage.svg">
-            <ion-card-content class="item-text">Massoterapia</ion-card-content>
-          </div>
-        </ion-card>
-      </ion-col>
-
-      <ion-col>
-        <ion-card class="item-menu">
-          <div class="ion-text-center">
-            <img class="item-menu-img" src="/assets/imgs/nutricionist.svg">
-            <ion-card-content class="item-text">Nutricionista</ion-card-content>
-          </div>
-        </ion-card>
-      </ion-col>
-      
-      <!--hack coluna extra vazia-->
-      <ion-col></ion-col>
-    </ion-row>
+  <ion-list class="ion-padding label-graph">
+    <clinica-title-content title="Opções para seu gerenciamento"></clinica-title-content>
   </ion-list>
 
-  <ion-list class="ion-padding">
-    <ion-item>
-      <ion-label class="alert-text ion-text-uppercase">Para te lembrar</ion-label>
-    </ion-item>
-  </ion-list>
+  <clinica-services-list [serviceItens]="serviceItens"></clinica-services-list>
 
-  <ion-card class="card-alert">
-    <div class="ion-text-center">
-      <ion-card-content class="item-text">Você tem 1 agendamento marcado pra amanhã com a doutora Carol
-      </ion-card-content>
-    </div>
-  </ion-card>
+  <ion-list class="ion-padding label-graph">
+    <clinica-title-content title="Últimos 4 agendamentos"></clinica-title-content>
+  </ion-list>
+  <div class="timeline-space"></div>
+  <clinica-timeline></clinica-timeline>
 
 </ion-content>
