@@ -1,3 +1,4 @@
+import { HeaderModule } from './../../../shared/header/header.module';
 import { TimelineModule } from './../../../shared/timeline/timeline.module';
 import { TitleContentModule } from './../../../shared/title-content/title-content.module';
 import { RememberAlertModule } from './../../../shared/remember-alert/remember-alert.module';
@@ -15,6 +16,7 @@ import { SubHeaderModule } from 'src/app/shared/sub-header/sub-header.module';
     CommonModule,
     FormsModule,
     IonicModule,
+    HeaderModule,
     SubHeaderModule,
     HomeProfessionalRoutingModule,
     ServicesListModule,

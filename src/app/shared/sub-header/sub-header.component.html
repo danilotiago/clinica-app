@@ -22,5 +22,7 @@
   </ion-row>
 </ion-grid>
 <div *ngIf="showWelcome" class="ion-text-center">
-  <ion-text class="ion-text-uppercase icon-subtitle">Olá Maria !</ion-text>
+  <ion-text *ngIf="(user$ | async) as user"
+    class="ion-text-uppercase icon-subtitle"
+  >Olá {{user.name}} !</ion-text>
 </div>
