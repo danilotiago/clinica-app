@@ -1,9 +1,9 @@
 <ion-grid>
   <ion-row>
-    <ion-col>
+    <ion-col [ngClass]="getLogoPositionClass()[0]">
       <img class="logo" src="/assets/imgs/logo.svg">
     </ion-col>
-    <ion-col>
+    <ion-col [ngClass]="getLogoPositionClass()[1]">
       <div class="text-icon">
         <h1 class="title-logo">Carol</h1>
         <h3 class="subtitle-logo">Podologia</h3>
@@ -13,7 +13,7 @@
     <ion-col>
       <ion-row>
         <ion-col>
-          <ion-avatar class="icon-avatar" float-right>
+          <ion-avatar class="icon-avatar" float-right *ngIf="showAvatar">
             <img class="avatar-img" src="/assets/imgs/avatar-woman.svg">
           </ion-avatar>
         </ion-col>
