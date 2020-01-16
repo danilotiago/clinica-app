@@ -29,7 +29,7 @@ export class AuthService {
         )
         .pipe(tap(res => {
             const authToken = (<any>res).body.accessToken;
-            const user = new User((<any>res).body.user);
+            const user = (new User()).fromJson((<any>res).body.user);
     
             this.tokenService.setToken(authToken);
             this.userService.setUser(user);

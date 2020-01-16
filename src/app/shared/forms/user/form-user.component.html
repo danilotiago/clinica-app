@@ -1,18 +1,25 @@
-<form class="list-form">
+<form class="list-form" [formGroup]="formGroup" (submit)="submit()">
 
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="person" item-start class="text-primary"></ion-icon>
       Nome Completo
     </ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input 
+      formControlName="name"
+      type="text"
+    ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="calendar" item-start class="text-primary"></ion-icon>
       Data de nascimento
     </ion-label>
-    <ion-datetime displayFormat="DD/MM/YYYY"></ion-datetime>
+    <ion-datetime
+      formControlName="birthDate" 
+      displayFormat="DD/MM/YYYY"
+    ></ion-datetime
+    >
   </ion-item>
   <ion-grid class="no-padding">
     <ion-row>
@@ -22,7 +29,11 @@
             <ion-icon name="call" item-start class="text-primary"></ion-icon>
             Telefone
           </ion-label>
-          <ion-input type="text" mask="(00)0000-0000"></ion-input>
+          <ion-input
+            formControlName="telephone" 
+            type="text"
+          ></ion-input
+          >
         </ion-item>
       </ion-col>
       <ion-col>
@@ -31,7 +42,10 @@
             <ion-icon name="phone-portrait" item-start class="text-primary"></ion-icon>
             Celular
           </ion-label>
-          <ion-input type="text" mask="(00)00000-0000"></ion-input>
+          <ion-input
+            formControlName="cellphone" 
+            type="text"
+          ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -41,14 +55,20 @@
       <ion-icon name="pin" item-start class="text-primary"></ion-icon>
       CEP
     </ion-label>
-    <ion-input type="text" mask="00000-000"></ion-input>
+    <ion-input 
+      formControlName="cep"
+      type="text"
+    ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="pin" item-start class="text-primary"></ion-icon>
       Logradouro
     </ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input 
+      formControlName="street"
+      type="text"
+    ></ion-input>
   </ion-item>
   <ion-grid class="no-padding">
     <ion-row>
@@ -58,7 +78,10 @@
             <ion-icon name="pin" item-start class="text-primary"></ion-icon>
             Número
           </ion-label>
-          <ion-input type="number" autocomplete="off"></ion-input>
+          <ion-input 
+            formControlName="number"
+            type="number" 
+          ></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
@@ -67,7 +90,10 @@
             <ion-icon name="pin" item-start class="text-primary"></ion-icon>
             Complemento
           </ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input 
+            formControlName="complement"
+            type="text"
+          ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -77,7 +103,10 @@
       <ion-icon name="pin" item-start class="text-primary"></ion-icon>
       Bairro
     </ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input 
+      formControlName="neighborhood"
+      type="text"
+    ></ion-input>
   </ion-item>
   <ion-grid class="no-padding">
     <ion-row align-items-center>
@@ -87,7 +116,11 @@
             <ion-icon name="pin" item-start class="text-primary"></ion-icon>
             Estado
           </ion-label>
-          <ion-select placeholder="Selecione" (change)="showCities()">
+          <ion-select 
+            formControlName="state"
+            placeholder="Selecione" 
+            (change)="showCities()"
+          >
             <ion-select-option value="sp">São Paulo</ion-select-option>
             <ion-select-option value="rj">Rio de Janeiro</ion-select-option>
           </ion-select>
@@ -99,7 +132,10 @@
             <ion-icon name="pin" item-start class="text-primary"></ion-icon>
             Cidade
           </ion-label>
-          <ion-select placeholder="Selecione" disabled>
+          <ion-select 
+            formControlName="city"
+            placeholder="Selecione" 
+          >
             <ion-select-option value="sp">São Paulo</ion-select-option>
             <ion-select-option value="rj">Mogi das Cruzes</ion-select-option>
           </ion-select>
@@ -112,23 +148,38 @@
       <ion-icon name="mail" item-start class="text-primary"></ion-icon>
       E-mail
     </ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-input 
+      formControlName="email"
+      type="email"
+    ></ion-input>
+
   </ion-item>
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="lock" item-start class="text-primary"></ion-icon>
       Senha
     </ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input 
+      formControlName="password"
+      type="password"
+    ></ion-input>
   </ion-item>
   <ion-item>
     <ion-label class="label-login">
       Aceito receber contato via WhatsApp
     </ion-label>
-    <ion-checkbox></ion-checkbox>
+    <ion-checkbox
+      formControlName="canWhatsappContact"
+    ></ion-checkbox
+      >
   </ion-item>
   <div class="ion-text-center marginT-2">
-    <ion-button fill="outline" color="clinica-secondary">Cadastrar</ion-button>
+    <ion-button
+      type="submit" 
+      fill="outline" 
+      color="clinica-secondary"
+    >Cadastrar</ion-button
+    >
   </div>
   <div class="ion-text-center ion-padding">
     Ao se cadastrar, você estará aceitando os
