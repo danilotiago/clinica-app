@@ -32,6 +32,12 @@
           <ion-input
             formControlName="telephone" 
             type="text"
+            [brmasker]="{
+              form: formGroup.get('telephone'), 
+              mask: '(99) 9999-9999', 
+              len:14, 
+              type:'num'
+            }"
           ></ion-input
           >
         </ion-item>
@@ -45,6 +51,13 @@
           <ion-input
             formControlName="cellphone" 
             type="text"
+            [brmasker]="{
+              form: formGroup.get('cellphone'), 
+              mask: '(99) 99999-9999', 
+              len:15, 
+              type:'num'
+            }"
+
           ></ion-input>
         </ion-item>
       </ion-col>
@@ -58,6 +71,13 @@
     <ion-input 
       formControlName="cep"
       type="text"
+      (keyup)="getAddress()"
+      [brmasker]="{
+        form: formGroup.get('cep'), 
+        mask: '99999-999', 
+        len:9, 
+        type:'num'
+      }"
     ></ion-input>
   </ion-item>
   <ion-item>
@@ -128,17 +148,14 @@
       </ion-col>
       <ion-col>
         <ion-item>
-          <ion-label class="label-login">
+          <ion-label class="label-login" position="floating">
             <ion-icon name="pin" item-start class="text-primary"></ion-icon>
             Cidade
           </ion-label>
-          <ion-select 
+          <ion-input 
             formControlName="city"
-            placeholder="Selecione" 
-          >
-            <ion-select-option value="sp">São Paulo</ion-select-option>
-            <ion-select-option value="rj">Mogi das Cruzes</ion-select-option>
-          </ion-select>
+            type="text"
+          ></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

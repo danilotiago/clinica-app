@@ -19,6 +19,17 @@ export class Address {
         return this;
     }
 
+    fromJsonCEP(json: any): this {
+        this.cep          = json.cep;
+        this.street       = json.logradouro;
+        this.complement   = json.complemento;
+        this.neighborhood = json.bairro;
+        this.city         = json.localidade;
+        this.state        = json.uf;
+
+        return this;
+    }
+
     toJson(): this {
         throw new Error('Not implemented');
     }

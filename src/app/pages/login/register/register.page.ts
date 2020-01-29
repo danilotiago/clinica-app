@@ -33,14 +33,20 @@ export class RegisterPage implements OnInit {
             canWhatsappContact: [true,
                 Validators.required
             ],
-            email: ['',
-                Validators.required
+            email: ['', [
+                    Validators.required,
+                    Validators.email
+                ]
             ],
             password: ['',
                 Validators.required
             ],
             cep: ['',
-                Validators.required
+                [
+                    Validators.required,
+                    Validators.minLength(9),
+                    Validators.maxLength(9)
+                ]
             ],
             street: ['',
                 Validators.required
