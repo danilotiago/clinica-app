@@ -1,5 +1,7 @@
+import { UserService } from './../../../shared/services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'clinica-register',
@@ -10,7 +12,11 @@ export class RegisterPage implements OnInit {
 
     registerForm: FormGroup;
 
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(
+        private formBuilder: FormBuilder,
+        private userService: UserService,
+        private router: Router // remover pos refact
+    ) { }
 
     ngOnInit() {
         this.createForm();
@@ -68,8 +74,8 @@ export class RegisterPage implements OnInit {
     }
 
     register(formData: object) {
-        console.log('formdata, ', formData);
-        
+        this.userService.save(formData)
+            .subscribe(resp => this.router.navigate(['/home', 'client']));
     }
 
 }

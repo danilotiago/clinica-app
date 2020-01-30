@@ -138,11 +138,14 @@
           </ion-label>
           <ion-select 
             formControlName="state"
-            placeholder="Selecione" 
-            (change)="showCities()"
+            placeholder="Selecione"
           >
-            <ion-select-option value="sp">São Paulo</ion-select-option>
-            <ion-select-option value="rj">Rio de Janeiro</ion-select-option>
+            <ion-select-option 
+              *ngFor="let state of states"
+              [value]="state.abbreviation"
+            >
+              {{state.name}}
+            </ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
