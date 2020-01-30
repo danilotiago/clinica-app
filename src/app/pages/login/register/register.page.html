@@ -6,7 +6,10 @@
     </div>
 
     <div class="ion-padding">
-        <clinica-form-user></clinica-form-user>
+        <clinica-form-user 
+            [createdForm]="registerForm"
+            (formCompleted)="register($event)"
+        ></clinica-form-user>
     </div>
 
 

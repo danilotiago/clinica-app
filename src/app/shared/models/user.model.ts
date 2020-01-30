@@ -9,13 +9,19 @@ export class User {
     profiles: [string];
     address: Address;
 
-    constructor(json?: any) {
+    fromJson(json: any): this {
         this.id = json._id;
         this.name = json.name;
         this.birthDate = json.birthDate;
         this.email = json.email;
         this.password = json.password;
         this.profiles = json.profiles;
-        this.address = new Address(json.address);
+        this.address = (new Address()).fromJson(json.address);
+        
+        return this;
+    }
+
+    toJson(): this {
+        throw new Error('Not implemented');
     }
 }

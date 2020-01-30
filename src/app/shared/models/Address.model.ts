@@ -7,9 +7,7 @@ export class Address {
     city: string;
     state: string;
 
-    constructor(json?: any) {
-        if (!json) return;
-        
+    fromJson(json: any): this {
         this.cep          = json.cep;
         this.street       = json.street;
         this.number       = json.number;
@@ -17,5 +15,22 @@ export class Address {
         this.neighborhood = json.neighborhood;
         this.city         = json.city;
         this.state        = json.state;
+
+        return this;
+    }
+
+    fromJsonCEP(json: any): this {
+        this.cep          = json.cep;
+        this.street       = json.logradouro;
+        this.complement   = json.complemento;
+        this.neighborhood = json.bairro;
+        this.city         = json.localidade;
+        this.state        = json.uf;
+
+        return this;
+    }
+
+    toJson(): this {
+        throw new Error('Not implemented');
     }
 }

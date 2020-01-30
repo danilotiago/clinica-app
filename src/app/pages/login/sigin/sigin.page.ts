@@ -24,14 +24,7 @@ export class SiginPage implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.loginForm = this.formBuilder.group({
-            email: ['',
-                Validators.required
-            ],
-            password: ['',
-                Validators.required
-            ]
-        });
+        this.createForm();
     }
 
     login() {
@@ -62,6 +55,17 @@ export class SiginPage implements OnInit {
                     }
                 });
 
+    }
+
+    private createForm() {
+        this.loginForm = this.formBuilder.group({
+            email: ['',
+                Validators.required
+            ],
+            password: ['',
+                Validators.required
+            ]
+        });
     }
 
     private navigateAfterLogin(): void {

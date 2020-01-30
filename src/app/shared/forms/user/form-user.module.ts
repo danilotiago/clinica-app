@@ -1,15 +1,18 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { FormUserComponent } from './form-user.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgxMaskModule } from 'ngx-mask';
+import { BrMaskerModule } from 'br-mask';
+
 
 @NgModule({
   declarations: [FormUserComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     IonicModule,
-    NgxMaskModule.forRoot()
+    BrMaskerModule
   ],
   exports: [FormUserComponent]
 })
