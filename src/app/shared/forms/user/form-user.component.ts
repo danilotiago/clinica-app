@@ -16,10 +16,7 @@ export class FormUserComponent implements OnInit {
 
   @Output('formCompleted') dataFormEmitter: EventEmitter<Object> = new EventEmitter<Object>();
 
-  /**
-   * refact para array de estados
-   */
-  states: any;
+  states: State[];
   
   constructor(
     private route: ActivatedRoute,

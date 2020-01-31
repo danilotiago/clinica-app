@@ -7,5 +7,7 @@ export class State {
         this.id           = json._id;
         this.name         = json.name;
         this.abbreviation = json.abbreviation;
+
+        return this;
     }
 }
