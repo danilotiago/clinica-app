@@ -2,6 +2,7 @@ import { UserService } from './../../../shared/services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InputStringValidator } from 'src/app/shared/forms/validators/input-string/input-string-validator';
 
 @Component({
     selector: 'clinica-register',
@@ -25,16 +26,21 @@ export class RegisterPage implements OnInit {
     private createForm() {
         this.registerForm = this.formBuilder.group({
             name: ['',
-                Validators.required
+                [
+                    InputStringValidator.startsWithBlanks,
+                    InputStringValidator.minLengthIgnoringBlanks(3),
+                    InputStringValidator.maxLengthIgnoringBlanks(50)
+                ]
             ],
             birthDate: ['',
                 Validators.required
             ],
-            telephone: ['',
-                Validators.required
-            ],
+            telephone: [''],
             cellphone: ['',
-                Validators.required
+                [
+                    Validators.required,
+                    Validators.minLength(15)
+                ]
             ],
             canWhatsappContact: [true,
                 Validators.required
@@ -45,13 +51,16 @@ export class RegisterPage implements OnInit {
                 ]
             ],
             password: ['',
-                Validators.required
+                [
+                    Validators.required,
+                    Validators.minLength(4),
+                    Validators.maxLength(15)
+                ]    
             ],
             cep: ['',
                 [
                     Validators.required,
-                    Validators.minLength(9),
-                    Validators.maxLength(9)
+                    Validators.minLength(9)
                 ]
             ],
             street: ['',

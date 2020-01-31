@@ -1,4 +1,4 @@
-<form class="list-form" [formGroup]="formGroup" (submit)="submit()">
+<form #form="ngForm" class="list-form" [formGroup]="formGroup" (submit)="submit()">
 
   <ion-item>
     <ion-label class="label-login" position="floating">
@@ -10,6 +10,35 @@
       type="text"
     ></ion-input>
   </ion-item>
+    
+  <div class="errors">
+    
+    <ion-label color="danger"
+      *ngIf="
+      formGroup.get('name').errors?.startsWithBlanks 
+      && (form.submitted || formGroup.get('name').updateOn)"
+    >
+      * O nome não deve iniciar com caracteres em branco
+    </ion-label>
+
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('name').errors?.notMinlength 
+      && (form.submitted || formGroup.get('name').touched)"
+    >
+      * O nome deve ter no mínimo 3 caracteres
+    </ion-text>
+
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('name').errors?.notMaxlength 
+      && (form.submitted || formGroup.get('name').updateOn)"
+    >
+      * O nome deve ter no máximo 50 caracteres
+    </ion-text>
+
+  </div>
+
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="calendar" item-start class="text-primary"></ion-icon>
@@ -21,6 +50,19 @@
     ></ion-datetime
     >
   </ion-item>
+
+  <div class="errors">
+    
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('birthDate').errors?.required 
+      && (form.submitted || formGroup.get('birthDate').touched)"
+    >
+      * A data de nascimento é obrigatória
+    </ion-text>
+
+  </div>
+
   <ion-grid class="no-padding">
     <ion-row>
       <ion-col>
@@ -38,8 +80,7 @@
               len:14, 
               type:'num'
             }"
-          ></ion-input
-          >
+          ></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
@@ -57,9 +98,27 @@
               len:15, 
               type:'num'
             }"
-
           ></ion-input>
         </ion-item>
+        <div class="errors">
+    
+          <ion-text color="danger"
+            *ngIf="
+            formGroup.get('cellphone').errors?.required 
+            && (form.submitted || formGroup.get('cellphone').touched)"
+          >
+            * O número do celular é obrigatório
+          </ion-text>
+
+          <ion-text color="danger"
+            *ngIf="
+            formGroup.get('cellphone').errors?.minlength 
+            && (form.submitted || formGroup.get('cellphone').touched)"
+          >
+            * Este não parece ser um número de celular válido
+          </ion-text>
+      
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -80,6 +139,27 @@
       }"
     ></ion-input>
   </ion-item>
+  
+  <div class="errors">
+    
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('cep').errors?.required 
+      && (form.submitted || formGroup.get('cep').touched)"
+    >
+      * O número do CEP é obrigatório
+    </ion-text>
+
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('cep').errors?.minlength 
+      && (form.submitted || formGroup.get('cep').touched)"
+    >
+      * Este não parece ser um CEP válido
+    </ion-text>
+
+  </div>
+
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="pin" item-start class="text-primary"></ion-icon>
@@ -90,6 +170,19 @@
       type="text"
     ></ion-input>
   </ion-item>
+  
+  <div class="errors">
+    
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('street').errors?.required 
+      && (form.submitted || formGroup.get('street').touched)"
+    >
+      * O logradouro é obrigatório
+    </ion-text>
+
+  </div>
+
   <ion-grid class="no-padding">
     <ion-row>
       <ion-col>
@@ -128,6 +221,19 @@
       type="text"
     ></ion-input>
   </ion-item>
+  
+  <div class="errors">
+    
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('neighborhood').errors?.required 
+      && (form.submitted || formGroup.get('neighborhood').touched)"
+    >
+      * O bairro é obrigatório
+    </ion-text>
+
+  </div>
+
   <ion-grid class="no-padding">
     <ion-row align-items-center>
       <ion-col>
@@ -148,6 +254,17 @@
             </ion-select-option>
           </ion-select>
         </ion-item>
+        <div class="errors">
+    
+          <ion-text color="danger"
+            *ngIf="
+            formGroup.get('state').errors?.required 
+            && (form.submitted || formGroup.get('state').touched)"
+          >
+            * O estado é obrigatório
+          </ion-text>
+      
+        </div>
       </ion-col>
       <ion-col>
         <ion-item>
@@ -160,6 +277,17 @@
             type="text"
           ></ion-input>
         </ion-item>
+        <div class="errors">
+    
+          <ion-text color="danger"
+            *ngIf="
+            formGroup.get('city').errors?.required 
+            && (form.submitted || formGroup.get('city').touched)"
+          >
+            * A cidade é obrigatória
+          </ion-text>
+      
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -172,8 +300,25 @@
       formControlName="email"
       type="email"
     ></ion-input>
-
   </ion-item>
+  <div class="errors">
+    
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('email').errors?.required 
+      && (form.submitted || formGroup.get('email').touched)"
+    >
+      * O e-mail é obrigatório
+    </ion-text>
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('email').errors?.email 
+      && (form.submitted || formGroup.get('email').touched)"
+    >
+      * Este não parece ser um e-mail válido
+    </ion-text>
+
+  </div>
   <ion-item>
     <ion-label class="label-login" position="floating">
       <ion-icon name="lock" item-start class="text-primary"></ion-icon>
@@ -184,6 +329,32 @@
       type="password"
     ></ion-input>
   </ion-item>
+  <div class="errors">
+    
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('password').errors?.required 
+      && (form.submitted || formGroup.get('password').touched)"
+    >
+      * A senha é obrigatório
+    </ion-text>
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('password').errors?.minlength 
+      && (form.submitted || formGroup.get('password').touched)"
+    >
+      * A senha deve conter pelo menos 4 caracteres
+    </ion-text>
+
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('password').errors?.maxlength 
+      && (form.submitted || formGroup.get('password').updateOn)"
+    >
+      * A senha deve conter no máximo 15 caracteres
+    </ion-text>
+
+  </div>
   <ion-item>
     <ion-label class="label-login">
       Aceito receber contato via WhatsApp
@@ -195,10 +366,12 @@
   </ion-item>
   <div class="ion-text-center marginT-2">
     <ion-button
+      [disabled]="formGroup.invalid"
       type="submit" 
       fill="outline" 
       color="clinica-secondary"
     >Cadastrar</ion-button
+
     >
   </div>
   <div class="ion-text-center ion-padding">
