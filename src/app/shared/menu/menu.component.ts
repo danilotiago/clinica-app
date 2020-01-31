@@ -11,7 +11,7 @@ import { menuList } from './menu-list';
 })
 export class MenuComponent implements OnInit {
 
-    protected menuList: Menu[] = menuList;
+    menuList: Menu[] = menuList;
     showMenu: boolean = true;
     constructor(private router: Router) { }
 

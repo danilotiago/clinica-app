@@ -12,4 +12,8 @@ export class ForgotpassPage implements OnInit {
     ngOnInit() {
     }
 
+    forgotPass() {
+        
+    }
+
 }
