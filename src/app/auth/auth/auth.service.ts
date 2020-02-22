@@ -28,12 +28,15 @@ export class AuthService {
             {observe: 'response'}
         )
         .pipe(tap(res => {
-            const authToken = (<any>res).body.accessToken;
-            const user = (new User()).fromJson((<any>res).body.user);
-    
-            this.tokenService.setToken(authToken);
+            const body: object = (<any>res).body;
+            this.tokenService.setToken((<any>body).accessToken);
+            delete (<any>body).accessToken;
+            
+            const user: User = body as User;
             this.userService.setUser(user);
-            console.log(`User ${user.id} with email ${user.email} authenticated with token ${authToken}`);
+
+            console.log(`User ${(<any>body).id} with name ${(<any>body).name} 
+              authenticated with token ${(<any>body).accessToken}`);
         }));
   }
 }
