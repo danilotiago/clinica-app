@@ -1,3 +1,5 @@
+import { State } from './State.model';
+
 export class Address {
     cep: string;
     street: string;
@@ -5,7 +7,7 @@ export class Address {
     complement: string;
     neighborhood: string;
     city: string;
-    state: string;
+    state: State;
 
     fromJson(json: any): this {
         this.cep          = json.cep;
@@ -15,6 +17,18 @@ export class Address {
         this.neighborhood = json.neighborhood;
         this.city         = json.city;
         this.state        = json.state;
+
+        return this;
+    }
+
+    fromObject(data: object): this {
+        this.cep          = (<any>data).cep;
+        this.street       = (<any>data).street;
+        this.number       = (<any>data).number;
+        this.complement   = (<any>data).complement;
+        this.neighborhood = (<any>data).neighborhood;
+        this.city         = (<any>data).city;
+        this.state        = (new State()).fromObject((<any>data).state);
 
         return this;
     }

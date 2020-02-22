@@ -10,4 +10,12 @@ export class State {
 
         return this;
     }
+
+    fromObject(data: object): this {
+        this.id           = (<any>data)._id || (<any>data).id;
+        this.name         = (<any>data).name;
+        this.abbreviation = (<any>data).abbreviation;
+
+        return this;
+    }
 }

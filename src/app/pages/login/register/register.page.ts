@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { InputStringValidator } from 'src/app/shared/forms/validators/input-string/input-string-validator';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
     selector: 'clinica-register',
@@ -82,8 +83,8 @@ export class RegisterPage implements OnInit {
         });
     }
 
-    register(formData: object) {
-        this.userService.save(formData)
+    register(newUser: User) {
+        this.userService.save(newUser)
             .subscribe(resp => this.router.navigate(['/home', 'client']));
     }
 
