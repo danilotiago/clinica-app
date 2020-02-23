@@ -1,9 +1,10 @@
 import { UserService } from './../../../shared/services/user.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { InputStringValidator } from 'src/app/shared/forms/validators/input-string/input-string-validator';
 import { User } from 'src/app/shared/models/user.model';
+import { AuthService } from 'src/app/auth/auth/auth.service';
+import { RedirectAfterLoginService } from 'src/app/shared/services/redirect-after-login.service';
 
 @Component({
     selector: 'clinica-register',
@@ -17,7 +18,9 @@ export class RegisterPage implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private userService: UserService,
-        private router: Router // remover pos refact
+        private authService: AuthService,
+        private redirectAfterLoginService: RedirectAfterLoginService
+        
     ) { }
 
     ngOnInit() {
@@ -84,8 +87,13 @@ export class RegisterPage implements OnInit {
     }
 
     register(newUser: User) {
-        this.userService.save(newUser)
-            .subscribe(resp => this.router.navigate(['/home', 'client']));
+        this.userService
+            .save(newUser)
+            .subscribe(resp => {
+                this.authService
+                    .authenticate(newUser.email, newUser.password)
+                    .subscribe(resp => this.redirectAfterLoginService.navigateAfterLogin());
+            });
     }
 
 }
