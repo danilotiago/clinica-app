@@ -20,7 +20,7 @@ export class UserService {
     newUser = this.formatObjectToSendToApi(newUser);
 
     return this.http
-      .post(`${API_URL}/users`, newUser)
+      .post(`${API_URL}/users/client`, newUser)
   }
 
   private formatObjectToSendToApi(user: User): User {
