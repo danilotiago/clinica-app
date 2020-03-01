@@ -317,6 +317,18 @@
     >
       * Este não parece ser um e-mail válido
     </ion-text>
+    <ion-text color="danger"
+      *ngIf="
+      formGroup.get('email').errors?.emailUsed"
+    >
+      * Este e-mail ja está sendo usado
+    </ion-text>
+    <ion-text color="success"
+      *ngIf="
+      formGroup.get('email').valid"
+    >
+      * E-mail disponível
+    </ion-text>
 
   </div>
   <ion-item>
