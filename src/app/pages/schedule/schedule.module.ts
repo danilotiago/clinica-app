@@ -1,5 +1,6 @@
 import { HeaderModule } from './../../shared/header/header.module';
 import { TitleContentModule } from './../../shared/title-content/title-content.module';
+import { ServicesListModule } from './../../shared/services-list/services-list.module';
 import { TimelineModule } from './../../shared/timeline/timeline.module';
 import { SubHeaderModule } from './../../shared/sub-header/sub-header.module';
 import { NgModule } from '@angular/core';
@@ -13,16 +14,17 @@ import { ScheduleRoutingModule } from './schedule-routing.module';
 import { SchedulePage } from './schedule.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    HeaderModule,
-    ScheduleRoutingModule,
-    SubHeaderModule,
-    TimelineModule,
-    TitleContentModule
-  ],
-  declarations: [SchedulePage]
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        HeaderModule,
+        ScheduleRoutingModule,
+        SubHeaderModule,
+        ServicesListModule,
+        TimelineModule,
+        TitleContentModule
+    ],
+    declarations: [SchedulePage]
 })
-export class SchedulePageModule {}
+export class SchedulePageModule { }

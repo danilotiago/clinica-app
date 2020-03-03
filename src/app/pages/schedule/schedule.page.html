@@ -1,17 +1,61 @@
-<clinica-header></clinica-header>
+<ion-content fullscreen>
+  <ion-slides [options]="slideOpts">
 
-<ion-content>
+    <ion-slide>
+      <div class="slide">
+        <div class="marginT-5">
+          <clinica-title-content title="Selecionar Serviço"></clinica-title-content>
+        </div>
+        <clinica-services-list (click)="nextSlide()" [serviceItens]="serviceItens"></clinica-services-list>
+      </div>
+    </ion-slide>
 
-  <clinica-sub-header></clinica-sub-header>
+    <ion-slide>
+      <ion-list>
+        <div class="marginT-5">
+          <clinica-title-content title="Selecionar procedimentos"></clinica-title-content>
+        </div>
+        <ion-item>
+          <ion-checkbox color="danger" slot="start"></ion-checkbox>
+          <ion-label>Unha encravada</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox color="danger" slot="start"></ion-checkbox>
+          <ion-label>Frieira</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox color="danger" slot="start"></ion-checkbox>
+          <ion-label>Calo</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-checkbox color="danger" slot="start"></ion-checkbox>
+          <ion-label>Micose</ion-label>
+        </ion-item>
 
-  <div class="ion-text-center">
-    <ion-button fill="outline" color="clinica-secondary">Novo agendamento</ion-button>
-  </div>
+      </ion-list>
+    </ion-slide>
 
-  <div class="marginB-2">
-    <clinica-title-content title="Últimos agendamentos"></clinica-title-content>
-  </div>
+    <ion-slide>
+      <img src="./slide-3.png" />
+      <h2>What is Ionic Appflow?</h2>
+      <p><b>Ionic Appflow</b> is a powerful set of services and features built on top of Ionic Framework that brings
+        a totally new level of app development agility to mobile dev teams.</p>
+    </ion-slide>
 
-  <clinica-timeline></clinica-timeline>
+    <ion-slide>
+      <img src="./slide-4.png" />
+      <h2>Ready to Play?</h2>
+      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-slide>
 
+  </ion-slides>
+
+  <ion-fab-button class="pull-left" (click)="prevSlide()" *ngIf="! isFirstSlide()">
+    <ion-icon name="arrow-back"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-button class="pull-right" (click)="nextSlide()" *ngIf="! isFirstSlide()">
+    <ion-icon name="arrow-forward"></ion-icon>
+  </ion-fab-button>
 </ion-content>
