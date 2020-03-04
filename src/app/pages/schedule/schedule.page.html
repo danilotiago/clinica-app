@@ -36,17 +36,28 @@
     </ion-slide>
 
     <ion-slide>
-      <img src="./slide-3.png" />
-      <h2>What is Ionic Appflow?</h2>
-      <p><b>Ionic Appflow</b> is a powerful set of services and features built on top of Ionic Framework that brings
-        a totally new level of app development agility to mobile dev teams.</p>
+      <ion-list>
+        <ion-item>
+          <div class="marginT-5">
+            <clinica-title-content title="Selecionar profissional"></clinica-title-content>
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-searchbar (keyup)="changeSearchProfessional()"></ion-searchbar>
+        </ion-item>
+        <ion-item>
+          <clinica-professionals-list (click)="nextSlide()" [professionalItems]="professionalItems">
+          </clinica-professionals-list>
+        </ion-item>
+      </ion-list>
     </ion-slide>
 
     <ion-slide>
-      <img src="./slide-4.png" />
-      <h2>Ready to Play?</h2>
-      <ion-button fill="clear">Continue <ion-icon slot="end" name="arrow-forward"></ion-icon>
-      </ion-button>
+      <div style="width: 100%!important;">
+        <div class="marginT-5 ">
+          <clinica-title-content title="Selecionar Local"></clinica-title-content>
+        </div>
+      </div>
     </ion-slide>
 
   </ion-slides>
