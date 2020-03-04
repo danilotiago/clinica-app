@@ -1,5 +1,5 @@
 import { ProfessionalItem } from './professional-item.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'clinica-professionals-list',
@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfessionalsListComponent implements OnInit {
 
-    @Input('professionalItems') professionalItems: professionalItem[];
+    @Input('professionalItems') professionalItems: ProfessionalItem[];
 
     constructor() { }
 
