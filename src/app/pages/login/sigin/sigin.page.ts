@@ -1,9 +1,8 @@
-import { AuthUserService } from '../../../shared/services/auth-user.service';
 import { AuthService } from './../../../auth/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { RedirectAfterLoginService } from 'src/app/shared/services/redirect-after-login.service';
 
 
 @Component({
@@ -18,9 +17,8 @@ export class SiginPage implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthService,
-        private authUserService: AuthUserService,
-        private toastr: ToastController,
-        private router: Router
+        private redirectAfterLoginService: RedirectAfterLoginService,
+        private toastr: ToastController
     ) { }
 
     ngOnInit() {
@@ -32,7 +30,7 @@ export class SiginPage implements OnInit {
         const password: string = this.loginForm.get('password').value;
         this.authService.authenticate(email, password)
             .subscribe(() => {
-                this.navigateAfterLogin();
+                this.redirectAfterLoginService.navigateAfterLogin();
             },
                 async err => {
                     if (err.status === 403) {
@@ -65,21 +63,6 @@ export class SiginPage implements OnInit {
             password: ['',
                 Validators.required
             ]
-        });
-    }
-
-    private navigateAfterLogin(): void {
-        
-        this.authUserService.getUser().subscribe(user => {
-            if (!user) return;
-            
-            const profiles: [string] = user.profiles;
-
-            if (profiles.includes('admin') || profiles.includes('professional')) {
-                this.router.navigate(['/home', 'professional']);
-            } else {
-                this.router.navigate(['/home', 'client']);
-            }
         });
     }
 }

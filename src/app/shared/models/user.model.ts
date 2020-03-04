@@ -21,6 +21,18 @@ export class User {
         return this;
     }
 
+    fromObject(data: object): this {
+        this.id = (<any>data)._id;
+        this.name = (<any>data).name;
+        this.birthDate = (<any>data).birthDate;
+        this.email = (<any>data).email;
+        this.password = (<any>data).password;
+        this.profiles = (<any>data).profiles;
+        this.address = (new Address()).fromObject(data);
+        
+        return this;
+    }
+
     toJson(): this {
         throw new Error('Not implemented');
     }
