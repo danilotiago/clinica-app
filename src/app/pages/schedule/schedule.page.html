@@ -42,9 +42,9 @@
             <clinica-title-content title="Selecionar profissional"></clinica-title-content>
           </div>
         </ion-item>
-        <ion-item>
+        <!-- <ion-item>
           <ion-searchbar (keyup)="changeSearchProfessional()"></ion-searchbar>
-        </ion-item>
+        </ion-item> -->
         <ion-item>
           <clinica-professionals-list (click)="nextSlide()" [professionalItems]="professionalItems">
           </clinica-professionals-list>
@@ -55,8 +55,25 @@
     <ion-slide>
       <div style="width: 100%!important;">
         <div class="marginT-5 ">
-          <clinica-title-content title="Selecionar Local"></clinica-title-content>
+          <clinica-title-content title="Selecionar Local de consulta"></clinica-title-content>
         </div>
+        <ion-list>
+          <ion-radio-group value="1">
+
+            <ion-item>
+              <ion-label>Clínica</ion-label>
+              <ion-radio slot="location" value="1"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Residência</ion-label>
+              <ion-radio slot="location" value="2"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <clinica-title-content title="Selecionar Data e Hora Disponíveis"></clinica-title-content>
+        <ion-calendar [(ngModel)]="date" [format]="'DD-MM-YYYY'"></ion-calendar>
+        
       </div>
     </ion-slide>
 

@@ -7,6 +7,7 @@ import { SubHeaderModule } from './../../shared/sub-header/sub-header.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { CalendarModule } from 'ion2-calendar';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -25,7 +26,8 @@ import { SchedulePage } from './schedule.page';
         ServicesListModule,
         ProfessionalsListModule,
         TimelineModule,
-        TitleContentModule
+        TitleContentModule,
+        CalendarModule
     ],
     declarations: [SchedulePage]
 })

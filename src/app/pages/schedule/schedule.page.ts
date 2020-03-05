@@ -1,5 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, IonItem, IonLabel, IonRadioGroup, IonRadio } from '@ionic/angular';
+import { ServiceItem } from 'src/app/shared/services-list/service-item.interface';
+import { ProfessionalItem } from 'src/app/shared/professionals-list/professional-item.interface';
+import {SwiperOptions} from 'swiper';
+import { filter } from 'rxjs/operators';
 
 @Component({
     selector: 'clinica-schedule',
@@ -7,7 +11,7 @@ import { IonSlides } from '@ionic/angular';
     styleUrls: ['./schedule.page.scss'],
 })
 export class SchedulePage implements OnInit {
-    @ViewChild(IonSlides) slides: IonSlides;
+    @ViewChild(IonSlides, {static: false}) slides: IonSlides;
     actualSlide: number = 0;
 
     slideOpts: SwiperOptions = {
@@ -61,15 +65,12 @@ export class SchedulePage implements OnInit {
     }
 
     changeSearchProfessional(): void {
-        const searchbar = document.querySelector('ion-searchbar');
-        const items = Array.from(document.getElementById("list").children);
-        const query = event.target.value.toLowerCase();
-        requestAnimationFrame(() => {
-            items.forEach(item => {
-                const shouldShow = item.textContent.toLowerCase().indexOf(query) > -1;
-                item.style.display = shouldShow ? 'block' : 'none';
-            })
-        });
+        const search = (<any>event.target).value.toLowerCase();
+        const list = this.professionalItems;
+
+        this.professionalItems = list.filter(item => {
+            return item.name.indexOf(search);
+        })
     }
 
     private incrmentSlide(): void {
