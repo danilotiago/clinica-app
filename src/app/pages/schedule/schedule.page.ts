@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, IonItem, IonLabel, IonRadioGroup, IonRadio } from '@ionic/angular';
 import { ServiceItem } from 'src/app/shared/services-list/service-item.interface';
 import { SwiperOptions } from 'swiper';
+import { CalendarComponentOptions } from 'ion2-calendar';
 
 @Component({
     selector: 'clinica-schedule',
@@ -13,9 +14,8 @@ export class SchedulePage implements OnInit {
     actualSlide: number = 0;
     professionalValue: number;
 
-    slideOpts: SwiperOptions = {
-        allowTouchMove: false
-    };
+    slideOpts: SwiperOptions = { allowTouchMove: false };
+    calendarOpts: CalendarComponentOptions = { color: "danger" }
 
     serviceItens: ServiceItem[] = [
         {
@@ -81,15 +81,25 @@ export class SchedulePage implements OnInit {
     }
 
     private incrmentSlide(): void {
-        this.actualSlide++;
+        if (this.actualSlide < 6)
+            this.actualSlide++;
     }
 
     private decrementSlide(): void {
-        this.actualSlide--;
+        if (this.actualSlide > 0)
+            this.actualSlide--;
     }
 
     private isFirstSlide(): boolean {
         return this.actualSlide === 0;
+    }
+
+    private isLastSlide(): boolean {
+        return this.actualSlide === 6;
+    }
+
+    private isFirstAndLastSlide(): boolean {
+        return this.isFirstSlide() || this.isLastSlide();
     }
 
 }

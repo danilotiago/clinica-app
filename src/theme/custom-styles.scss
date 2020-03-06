@@ -167,6 +167,10 @@
   border-bottom: 1px solid rgba(86, 61, 124, 0.1);
 }
 
+.h-4 {
+  height: 40% !important;
+}
+
 .full-width {
   width: 100% !important;
 }
@@ -175,10 +179,18 @@
   max-width: 100% !important;
 }
 
-.relative-bl {
-  position: relative;
+.absolute-bl {
+  position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 999;
+}
+
+.relative-br {
+  position: relative;
+  bottom: 0;
+  right: 0;
+  z-index: 999;
 }
 
 .padding-sm {
