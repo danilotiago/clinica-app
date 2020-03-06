@@ -1,89 +1,76 @@
 <ion-content fullscreen>
   <ion-slides [options]="slideOpts">
-
     <ion-slide>
-      <div class="slide">
-        <div class="marginT-5">
-          <clinica-title-content title="Selecionar Serviço"></clinica-title-content>
-        </div>
+      <div class="slide full-width">
+        <clinica-title-content title="Selecionar Serviço"></clinica-title-content>
         <clinica-services-list (click)="nextSlide()" [serviceItens]="serviceItens"></clinica-services-list>
       </div>
     </ion-slide>
-
     <ion-slide>
-      <ion-list>
-        <div class="marginT-5">
-          <clinica-title-content title="Selecionar procedimentos"></clinica-title-content>
-        </div>
-        <ion-item>
-          <ion-checkbox color="danger" slot="start"></ion-checkbox>
-          <ion-label>Unha encravada</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox color="danger" slot="start"></ion-checkbox>
-          <ion-label>Frieira</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox color="danger" slot="start"></ion-checkbox>
-          <ion-label>Calo</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-checkbox color="danger" slot="start"></ion-checkbox>
-          <ion-label>Micose</ion-label>
-        </ion-item>
+      <div class="slide full-width">
 
-      </ion-list>
-    </ion-slide>
-
-    <ion-slide>
-      <ion-list>
-        <ion-item>
-          <div class="marginT-5">
-            <clinica-title-content title="Selecionar profissional"></clinica-title-content>
-          </div>
-        </ion-item>
-        <!-- <ion-item>
-          <ion-searchbar (keyup)="changeSearchProfessional()"></ion-searchbar>
-        </ion-item> -->
-        <ion-item>
-          <clinica-professionals-list (click)="nextSlide()" [professionalItems]="professionalItems">
-          </clinica-professionals-list>
-        </ion-item>
-      </ion-list>
-    </ion-slide>
-
-    <ion-slide>
-      <div style="width: 100%!important;">
-        <div class="marginT-5 ">
-          <clinica-title-content title="Selecionar Local de consulta"></clinica-title-content>
-        </div>
-        <ion-list>
-          <ion-radio-group value="1">
-
-            <ion-item>
-              <ion-label>Clínica</ion-label>
-              <ion-radio slot="location" value="1"></ion-radio>
+        <div class="full-width">
+          <clinica-title-content title="Selecionar Procedimento"></clinica-title-content>
+          <ion-list>
+            <ion-item *ngFor="let item of procedureItems">
+              <ion-checkbox [(ngModel)]="item.isChecked" class="mr-1"></ion-checkbox>
+              <ion-label>{{ item.label }}</ion-label>
             </ion-item>
+          </ion-list>
+        </div>
 
-            <ion-item>
-              <ion-label>Residência</ion-label>
-              <ion-radio slot="location" value="2"></ion-radio>
-            </ion-item>
+        <div class="full-width">
+          <clinica-title-content title="Selecionar Profissional"></clinica-title-content>
+          <ion-radio-group>
+            <ion-list>
+              <ion-item *ngFor="let item of professionalItems">
+                <ion-radio slot="start" value="{{ item.id }}" class="mr-1">
+                </ion-radio>
+                <ion-label>{{ item.name }}</ion-label>
+              </ion-item>
+            </ion-list>
           </ion-radio-group>
-        </ion-list>
-        <clinica-title-content title="Selecionar Data e Hora Disponíveis"></clinica-title-content>
-        <ion-calendar [(ngModel)]="date" [format]="'DD-MM-YYYY'"></ion-calendar>
-        
+        </div>
+
+        <div class="full-width">
+          <clinica-title-content title="Selecionar Local de Consulta"></clinica-title-content>
+          <div class="mt-2">
+            <ion-radio-group value="1">
+              <ion-radio class="mr-1" slot="location" value="1"></ion-radio>
+              <ion-label class="mr-2">Clínica</ion-label>
+
+              <ion-radio class="mr-1" slot="location" value="2"></ion-radio>
+              <ion-label>Residência</ion-label>
+            </ion-radio-group>
+          </div>
+        </div>
+
+        <div class="full-width">
+          <clinica-title-content title="Selecionar Data"></clinica-title-content>
+          <ion-calendar [(ngModel)]="date" [format]="'DD-MM-YYYY'"></ion-calendar>
+        </div>
+
+        <div class="full-width">
+          <clinica-title-content title="Selecionar Hora"></clinica-title-content>
+          <ion-radio-group>
+            <ion-list>
+              <ion-item *ngFor="let item of hourItems">
+                <ion-radio class="mr-1" slot="start" value="{{ item.id }}"></ion-radio>
+                <ion-label>{{ item.start }} às {{ item.end }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-radio-group>
+        </div>
+
+        <div class="full-width">
+          <clinica-title-content title="Observações dos sintomas"></clinica-title-content>
+          <ion-textarea color="danger" rows="6"></ion-textarea>
+        </div>
+
       </div>
     </ion-slide>
-
   </ion-slides>
-
-  <ion-fab-button class="pull-left" (click)="prevSlide()" *ngIf="! isFirstSlide()">
+  <ion-fab-button class="relative-bl" (click)="prevSlide()" *ngIf="! isFirstSlide()">
     <ion-icon name="arrow-back"></ion-icon>
-  </ion-fab-button>
-
-  <ion-fab-button class="pull-right" (click)="nextSlide()" *ngIf="! isFirstSlide()">
-    <ion-icon name="arrow-forward"></ion-icon>
   </ion-fab-button>
 </ion-content>

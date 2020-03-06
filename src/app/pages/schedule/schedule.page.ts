@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, IonItem, IonLabel, IonRadioGroup, IonRadio } from '@ionic/angular';
 import { ServiceItem } from 'src/app/shared/services-list/service-item.interface';
-import { ProfessionalItem } from 'src/app/shared/professionals-list/professional-item.interface';
-import {SwiperOptions} from 'swiper';
-import { filter } from 'rxjs/operators';
+import { SwiperOptions } from 'swiper';
 
 @Component({
     selector: 'clinica-schedule',
@@ -11,8 +9,9 @@ import { filter } from 'rxjs/operators';
     styleUrls: ['./schedule.page.scss'],
 })
 export class SchedulePage implements OnInit {
-    @ViewChild(IonSlides, {static: false}) slides: IonSlides;
+    @ViewChild(IonSlides, { static: false }) slides: IonSlides;
     actualSlide: number = 0;
+    professionalValue: number;
 
     slideOpts: SwiperOptions = {
         allowTouchMove: false
@@ -46,8 +45,25 @@ export class SchedulePage implements OnInit {
         }
     ];
 
-    professionalItems: ProfessionalItem[] = [{ name: 'Heitor Fonseca' }]
+    procedureItems: Array<Object> = [
+        { label: 'Unha encravada', isChecked: false },
+        { label: 'Frieira', isChecked: false },
+        { label: 'Calo', isChecked: false },
+        { label: 'Micose', isChecked: false },
+    ];
 
+    professionalItems: Array<Object> = [
+        { id: 1, name: 'Carol', isChecked: false },
+        { id: 2, name: 'Márcia', isChecked: false },
+        { id: 3, name: 'Roberta', isChecked: false },
+        { id: 4, name: 'Mariana', isChecked: false },
+    ];
+
+    hourItems: Array<Object> = [
+        { id: 1, start: '12:00', end: '13:00' },
+        { id: 2, start: '15:40', end: '16:40' },
+        { id: 3, start: '17:00', end: '18:00' },
+    ];
 
     constructor() { }
 
@@ -62,15 +78,6 @@ export class SchedulePage implements OnInit {
     prevSlide(): void {
         this.decrementSlide();
         this.slides.slidePrev();
-    }
-
-    changeSearchProfessional(): void {
-        const search = (<any>event.target).value.toLowerCase();
-        const list = this.professionalItems;
-
-        this.professionalItems = list.filter(item => {
-            return item.name.indexOf(search);
-        })
     }
 
     private incrmentSlide(): void {
