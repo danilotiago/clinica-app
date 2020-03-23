@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceItem } from 'src/app/shared/services-list/service-item.interface';
 import { SpecialtyService } from 'src/app/shared/services/specialty.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-specialty',
@@ -9,12 +10,14 @@ import { SpecialtyService } from 'src/app/shared/services/specialty.service';
 })
 export class SpecialtyPage implements OnInit {
 
-  constructor(private service: SpecialtyService) { }
+  constructor(
+    private service: SpecialtyService,
+    private route: ActivatedRoute) { }
 
   serviceItens: ServiceItem[] = [];
 
   ngOnInit() {
-    this.getAllSpecialties();
+    this.getAllSpecialtiesByResolver();
   }
 
   /*serviceItens: ServiceItem[] = [
@@ -45,17 +48,16 @@ export class SpecialtyPage implements OnInit {
     }
   ]*/
 
-  private getAllSpecialties(): void {
-    this.service.getAllSpecialties()
-      .subscribe(specialties => {
-        specialties.map(specialty => {
-          this.serviceItens.push({
-            name: specialty.name,
-            path: '#',
-            logo: specialty.image
-          });
+  private getAllSpecialtiesByResolver(): void {
+    
+    this.route.snapshot.data.specialties
+      .map(specialty => {
+        this.serviceItens.push({
+          name: specialty.name,
+          path: '#',
+          logo: specialty.image
         });
-      });
+    });
   }
 
 }
