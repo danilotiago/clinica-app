@@ -9,7 +9,11 @@
 
   <br>
   <div class="ion-text-center">
-    <ion-button fill="outline" color="clinica-secondary">Novo serviço</ion-button>
+    <ion-button 
+      fill="outline" 
+      color="clinica-secondary"
+      [routerLink]="['create']"
+    >Novo serviço</ion-button>
   </div>
   
   <clinica-title-content title="Serviços disponíveis"></clinica-title-content>

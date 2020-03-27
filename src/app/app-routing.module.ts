@@ -15,7 +15,7 @@ const routes: Routes = [
         loadChildren: () => import('./pages/schedule/schedule.module').then( m => m.SchedulePageModule)
     },
     {
-        path: 'specialty',
+        path: 'specialties',
         loadChildren: () => import('./pages/specialty/specialty.module').then( m => m.SpecialtyPageModule)
     },
     {

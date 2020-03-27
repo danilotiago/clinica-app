@@ -9,6 +9,10 @@ const routes: Routes = [
     path: '',
     component: SpecialtyPage,
     resolve: { specialties: SpecialtiesResolver }
+  },
+  {
+    path: 'create',
+    loadChildren: () => import('./specialty-create/specialty-create.module').then( m => m.SpecialtyCreatePageModule)
   }
 ];
 

@@ -1,4 +1,5 @@
 export class Specialty {
+    id: string;
     name: string;
     description: string;
     image: string;
@@ -12,6 +13,17 @@ export class Specialty {
         this.createdAt = json.createdAt;
         this.updatedAt = json.updatedAt;
         
+        return this;
+    }
+
+    fromObject(data: object): this {
+        this.id          = (<any>data)._id;
+        this.name        = (<any>data).name;
+        this.description = (<any>data).description;
+        this.image       = (<any>data).image;
+        this.createdAt   = (<any>data).createdAt;
+        this.updatedAt   = (<any>data).updatedAt;
+
         return this;
     }
 }

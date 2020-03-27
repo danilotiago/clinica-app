@@ -21,4 +21,9 @@ export class SpecialtyService {
         return (new Specialty()).fromJson(specialtyData)
       })));
   }
+
+  save(specialty: Specialty): Observable<any> {
+    return this.http
+      .post(`${API_URL}/specialties`, specialty)
+  }
 }
