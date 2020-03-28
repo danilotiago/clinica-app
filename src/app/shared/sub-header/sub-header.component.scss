@@ -17,6 +17,7 @@ ion-avatar {
 .title-logo {
     font-weight: 500;
     font-size: 1rem;
+    margin-top: -24px;
     color: var(--ion-color-clinica-secondary);
 }
 
@@ -42,8 +43,9 @@ ion-avatar {
 }
 
 .logo-img-center {
-    position: absolute;
     margin-left: 7rem;
+    margin-bottom: -36px;
+    margin-top: -23px;
 }
 
 .logo-content-center {

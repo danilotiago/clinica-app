@@ -1,0 +1,21 @@
+<clinica-header pageName="Editar serviço"></clinica-header>
+
+<ion-content>
+
+    <clinica-sub-header 
+        [showAvatar]="false" 
+        logoPosition="center"
+    ></clinica-sub-header>
+
+    <br>
+    <clinica-title-content title="Preencha os dados abaixo"></clinica-title-content>
+
+    <div class="ion-padding">
+        <clinica-form-specialty 
+            [createdForm]="specialtyForm"
+            (formCompleted)="edit($event)"
+            actionButton="Editar"
+        ></clinica-form-specialty>
+    </div>
+
+</ion-content>
