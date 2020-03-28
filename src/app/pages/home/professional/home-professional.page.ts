@@ -16,16 +16,19 @@ export class HomeProfessionalPage implements OnInit {
 
   serviceItens: ServiceItem[] = [
     {
+      id: "#",
       logo: '/assets/imgs/professional.svg',
       path: '#',
       name: 'Profissionais'
     },
     {
+      id: "#",
       logo: '/assets/imgs/user.svg',
       path: '#',
       name: 'Pacientes'
     },
     {
+      id: "#",
       logo: '/assets/imgs/calendar.svg',
       path: '#',
       name: 'Agendamentos'
