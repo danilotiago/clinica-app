@@ -11,6 +11,7 @@ import { Specialty } from '../../models/Specialty.model';
 export class FormSpecialtyComponent implements OnInit {
 
   @Input('createdForm') formGroup: FormGroup;
+  @Input('actionButton') actionButton: string;
 
   @Output('formCompleted') dataFormEmitter: EventEmitter<Object> = new EventEmitter<Object>();
   

@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'create',
     loadChildren: () => import('./specialty-create/specialty-create.module').then( m => m.SpecialtyCreatePageModule)
+  },
+  {
+    path: 'edit',
+    loadChildren: () => import('./specialty-edit/specialty-edit.module').then( m => m.SpecialtyEditPageModule)
   }
 ];
 

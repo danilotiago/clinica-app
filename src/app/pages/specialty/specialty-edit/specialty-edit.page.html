@@ -1,4 +1,4 @@
-<clinica-header pageName="Novo serviço"></clinica-header>
+<clinica-header pageName="Editar serviço"></clinica-header>
 
 <ion-content>
 
@@ -13,8 +13,8 @@
     <div class="ion-padding">
         <clinica-form-specialty 
             [createdForm]="specialtyForm"
-            (formCompleted)="register($event)"
-            actionButton="Cadastrar"
+            (formCompleted)="edit($event)"
+            actionButton="Editar"
         ></clinica-form-specialty>
     </div>
 

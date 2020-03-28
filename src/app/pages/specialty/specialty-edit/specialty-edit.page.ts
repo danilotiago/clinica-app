@@ -4,39 +4,42 @@ import { InputStringValidator } from 'src/app/shared/forms/validators/input-stri
 import { Specialty } from 'src/app/shared/models/Specialty.model';
 import { SpecialtyService } from 'src/app/shared/services/specialty.service';
 import { ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-specialty-create',
-  templateUrl: './specialty-create.page.html',
-  styleUrls: ['./specialty-create.page.scss'],
+  selector: 'app-specialty-edit',
+  templateUrl: './specialty-edit.page.html',
+  styleUrls: ['./specialty-edit.page.scss'],
 })
-export class SpecialtyCreatePage implements OnInit {
+export class SpecialtyEditPage implements OnInit {
 
   specialtyForm: FormGroup;
+  specialty: Specialty;
 
   constructor(
     private formBuilder: FormBuilder,
     private service: SpecialtyService,
     private toastr: ToastController,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
     ) { }
 
   ngOnInit() {
-    this.createForm();
+    this.specialty = this.activatedRoute.snapshot.data.specialty;
+    this.editForm();
   }
 
-  private createForm() {
+  private editForm() {
     this.specialtyForm = this.formBuilder.group({
-      name: ['',
+      name: [this.specialty.name,
         [
           InputStringValidator.startsWithBlanks,
           InputStringValidator.minLengthIgnoringBlanks(3),
           InputStringValidator.maxLengthIgnoringBlanks(50)
         ]
       ],
-      image: [''],
-      description: ['',
+      image: [this.renderImageToShow(this.specialty.image)],
+      description: [this.specialty.description,
         [
           InputStringValidator.maxLengthIgnoringBlanks(50)
         ]
@@ -44,14 +47,19 @@ export class SpecialtyCreatePage implements OnInit {
     });
   }
 
-  register(newSpecialty: Specialty) {
+  private renderImageToShow(image: string): any {
+    const splited: string[] = image.split("/");
+    return splited[splited.length-1].split(".")[0];
+  }
 
-    newSpecialty.image = this.setImage(newSpecialty.image);
+  edit(editSpecialty: Specialty) {
+    editSpecialty.image = this.setImage(editSpecialty.image);
+    editSpecialty.id    = this.specialty.id;
 
-    this.service.save(newSpecialty)
+    this.service.edit(editSpecialty.id, editSpecialty)
       .subscribe(async () => {
         const alert = await this.toastr.create({
-          message: 'Serviço cadastrado!',
+          message: 'Serviço editado!',
           duration: 4000,
           position: 'bottom',
           color: 'clinica-primary'

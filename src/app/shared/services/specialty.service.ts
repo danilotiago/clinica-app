@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Specialty } from '../models/Specialty.model';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { convertIdToSendToAPI } from '../utils/convertions';
 
 const API_URL: string = environment.API_URL;
 
@@ -22,9 +23,23 @@ export class SpecialtyService {
       })));
   }
 
+  get(id: string): Observable<Specialty> {
+    return this.http
+      .get<Specialty[]>(`${API_URL}/specialties/${id}`)
+      .pipe(
+        map(json => (new Specialty()).fromJson(json))
+      );
+  }
+
   save(specialty: Specialty): Observable<any> {
     return this.http
       .post(`${API_URL}/specialties`, specialty)
+  }
+
+  edit(id: string, specialty: Specialty): Observable<any> {
+    specialty = convertIdToSendToAPI(specialty);
+    return this.http
+      .put(`${API_URL}/specialties/${id}`, specialty)
   }
 
   remove(specialty: Specialty): Observable<any> {
