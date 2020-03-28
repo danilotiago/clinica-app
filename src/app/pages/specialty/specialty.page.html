@@ -18,6 +18,9 @@
   
   <clinica-title-content title="Serviços disponíveis"></clinica-title-content>
   
-  <clinica-services-list [serviceItens]="serviceItens"></clinica-services-list>
+  <clinica-services-list 
+    [serviceItens]="serviceItens"
+    (clicked)="clicked($event)"
+  ></clinica-services-list>
 
 </ion-content>

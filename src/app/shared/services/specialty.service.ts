@@ -26,4 +26,9 @@ export class SpecialtyService {
     return this.http
       .post(`${API_URL}/specialties`, specialty)
   }
+
+  remove(specialty: Specialty): Observable<any> {
+    return this.http
+      .delete(`${API_URL}/specialties/${specialty.id}`)
+  }
 }

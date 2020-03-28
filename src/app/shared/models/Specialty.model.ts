@@ -7,6 +7,7 @@ export class Specialty {
     updatedAt: Date;
 
     fromJson(json: any): this {
+        this.id = json._id;
         this.name = json.name;
         this.description = json.description;
         this.image = json.image;
@@ -17,7 +18,7 @@ export class Specialty {
     }
 
     fromObject(data: object): this {
-        this.id          = (<any>data)._id;
+        this.id          = (<any>data).id;
         this.name        = (<any>data).name;
         this.description = (<any>data).description;
         this.image       = (<any>data).image;

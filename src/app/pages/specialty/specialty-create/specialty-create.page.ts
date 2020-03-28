@@ -35,13 +35,7 @@ export class SpecialtyCreatePage implements OnInit {
           InputStringValidator.maxLengthIgnoringBlanks(50)
         ]
       ],
-      image: ['',
-        [
-          InputStringValidator.startsWithBlanks,
-          InputStringValidator.minLengthIgnoringBlanks(2),
-          InputStringValidator.maxLengthIgnoringBlanks(50)
-        ]
-      ],
+      image: [''],
       description: ['',
         [
           InputStringValidator.maxLengthIgnoringBlanks(50)
@@ -51,6 +45,9 @@ export class SpecialtyCreatePage implements OnInit {
   }
 
   register(newSpecialty: Specialty) {
+
+    newSpecialty.image = this.setImage(newSpecialty.image);
+
     this.service.save(newSpecialty)
       .subscribe(async () => {
         const alert = await this.toastr.create({
@@ -83,6 +80,13 @@ export class SpecialtyCreatePage implements OnInit {
           alert.present();
       }
       });
+  }
+
+  private setImage(image: string) {
+    if (! image) {
+        return '/assets/imgs/generic.svg';
+    }
+    return image;
   }
 
 }
