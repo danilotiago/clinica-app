@@ -14,15 +14,34 @@ export class FormSpecialtyComponent implements OnInit {
   @Input('actionButton') actionButton: string;
 
   @Output('formCompleted') dataFormEmitter: EventEmitter<Object> = new EventEmitter<Object>();
+
+  procedure: String = '';
+  procedures: String[] = [];
   
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    if (this.formGroup.value.procedures) {
+      this.procedures = this.formGroup.value.procedures;
+    }
+  }
 
   submit(): void {
     const formData: object = this.formGroup.getRawValue();
-    const newSpecialty: Specialty    = (new Specialty()).fromObject(formData);
-
+    formData['procedures'] = this.procedures;
+    
+    const newSpecialty: Specialty = (new Specialty()).fromObject(formData);
     this.dataFormEmitter.emit(newSpecialty);
+  }
+
+  addProcedure() {
+    if (! this.procedure) return;
+    
+    this.procedures.unshift(this.procedure);
+    this.procedure = '';
+  }
+
+  removeProcedure(name: string) {
+    this.procedures = this.procedures.filter(procedure => procedure != name);
   }
 }
