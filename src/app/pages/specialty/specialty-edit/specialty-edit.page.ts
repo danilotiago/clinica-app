@@ -43,7 +43,8 @@ export class SpecialtyEditPage implements OnInit {
         [
           InputStringValidator.maxLengthIgnoringBlanks(50)
         ]
-      ]
+      ],
+      procedures: [this.specialty.procedures]
     });
   }
 
