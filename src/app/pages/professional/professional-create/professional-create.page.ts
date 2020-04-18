@@ -5,6 +5,10 @@ import { Professional } from 'src/app/shared/models/Professional.model';
 import { ProfessionalService } from 'src/app/shared/services/professional.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
+import { Specialty } from 'src/app/shared/models/Specialty.model';
+import { SpecialtyService } from 'src/app/shared/services/specialty.service';
 
 @Component({
   selector: 'app-professional-create',
@@ -15,15 +19,26 @@ export class ProfessionalCreatePage implements OnInit {
 
   professionalForm: FormGroup;
 
+  users: User[]                    = [];
+  specialties: Specialty[]         = [];
+  specialtiesSelected: Specialty[] = [];
+
+  user: User = null;
+
   constructor(
     private formBuilder: FormBuilder,
     private service: ProfessionalService,
+    private userService: UserService,
+    private specialtyService: SpecialtyService,
     private toastr: ToastController,
     private router: Router
     ) { }
 
   ngOnInit() {
     this.createForm();
+
+    this.specialtyService.getAllSpecialties()
+      .subscribe(specialties => this.specialties = specialties);
   }
 
   private createForm() {
@@ -44,9 +59,13 @@ export class ProfessionalCreatePage implements OnInit {
     });
   }
 
-  register(newProfessional: Professional) {
+  register() {
 
-    this.service.save(newProfessional)
+    const professional: Professional = new Professional();
+    professional.user = this.user;
+    professional.specialties = this.specialtiesSelected;
+
+    this.service.save(professional)
       .subscribe(async () => {
         const alert = await this.toastr.create({
           message: 'Profissional cadastrado!',
@@ -56,7 +75,7 @@ export class ProfessionalCreatePage implements OnInit {
         });
         alert.present();
 
-        this.router.navigate(['/profissionals']);
+        this.router.navigate(['/professionals']);
 
       }, async err => {
         if (err.status === 400) {
@@ -78,5 +97,44 @@ export class ProfessionalCreatePage implements OnInit {
           alert.present();
       }
       });
+  }
+
+  findUsers(like: String) {
+    if (!like) {
+      this.users = [];
+      return;
+    }
+
+    if (like.length < 3) return;
+
+    this.userService.getAllUsers(like)
+      .subscribe(users => this.users = users);
+  }
+
+  selectUser(id: String) {
+    this.user = this.users.filter(user => user.id == id)[0];
+  }
+
+  hasUserSelected() {
+    return this.user ? true : false;
+  }
+
+  selectSpecialty(specialty: Specialty) {
+     if (this.specialtyAlreadySelected(specialty)) return;
+
+    this.specialtiesSelected.push(specialty);
+  }
+
+  cleanAll() {
+    this.user = null;
+    this.removeSpecialtiesSelected();
+  }
+
+  removeSpecialtiesSelected() {
+    this.specialtiesSelected = [];
+  }
+ 
+  private specialtyAlreadySelected(specialty: Specialty) {
+    return this.specialtiesSelected.find(item => item.id == specialty.id);
   }
 }

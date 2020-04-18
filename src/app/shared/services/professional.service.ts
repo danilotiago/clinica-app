@@ -32,8 +32,16 @@ export class ProfessionalService {
   }
 
   save(professional: Professional): Observable<any> {
+    const specialtiesIds: string[] = professional.specialties
+      .map(specialty => specialty.id);
+
+    const payload: object = {
+      user: professional.user.id,
+      specialties: specialtiesIds
+    };
+
     return this.http
-      .post(`${API_URL}/professionals`, professional)
+      .post(`${API_URL}/professionals`, payload)
   }
 
   edit(id: string, professional: Professional): Observable<any> {
