@@ -9,7 +9,9 @@ export class Professional {
     fromJson(json: any): this {
         this.id = json._id;
         this.user = (new User()).fromJson(json.user);
-        
+        this.specialties = json.specialties.map(specialty => {
+            return (new Specialty()).fromJson(specialty);
+        });
         return this;
     }
 

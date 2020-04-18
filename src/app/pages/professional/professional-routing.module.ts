@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProfessionalPage } from './professional.page';
 import { SpecialtiesResolver } from 'src/app/shared/resolvers/specialties.resolver';
+import { ProfessionalsResolver } from 'src/app/shared/resolvers/professionals.resolver';
 
 const routes: Routes = [
   {
     path: '',
     component: ProfessionalPage,
-    resolve: { specialties: SpecialtiesResolver }
+    resolve: { professionals: ProfessionalsResolver }
   },
   {
     path: 'create',
@@ -24,7 +25,7 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
   providers: [
-    SpecialtiesResolver
+    ProfessionalsResolver
   ]
 })
 export class ProfessionalPageRoutingModule {}
