@@ -1,5 +1,5 @@
 import { ServiceItem } from './service-item.interface';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'clinica-services-list',
@@ -9,6 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ServicesListComponent implements OnInit {
 
   @Input('serviceItens') serviceItens: ServiceItem[];
+
+  @Output('clicked') clickedEmitter: EventEmitter<Object> = new EventEmitter<Object>();
   
   constructor() { }
 
@@ -23,4 +25,7 @@ export class ServicesListComponent implements OnInit {
     return this.serviceItens.length % 3 == 2;
   }
 
+  clicked(item: ServiceItem) {
+    this.clickedEmitter.emit(item);
+  }
 }

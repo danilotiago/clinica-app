@@ -1,0 +1,43 @@
+<clinica-header pageName="Serviços"></clinica-header>
+
+<ion-content>
+  
+  <clinica-sub-header 
+    [showAvatar]="false" 
+    logoPosition="center"
+  ></clinica-sub-header>
+
+  <br>
+  <div class="ion-text-center">
+    <ion-button 
+      fill="outline" 
+      color="clinica-secondary"
+      [routerLink]="['create']"
+    >Novo profissional</ion-button>
+  </div>
+  
+  <clinica-title-content title="Profissionais"></clinica-title-content>
+
+  <ion-list>
+    <ion-item 
+      *ngFor="let professional of professionals"
+      class="ion-activatable ripple-parent"
+      (click)="clicked(professional)"
+    >
+      <ion-label>
+        <h2>{{ professional.user.name }}</h2>
+        <p> 
+          <ion-badge 
+            *ngFor="let specialty of professional.specialties" 
+            color="primary"
+            fill="outline"
+          >
+            {{specialty.name}}
+          </ion-badge>
+        </p>
+      </ion-label>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

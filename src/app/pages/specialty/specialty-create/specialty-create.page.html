@@ -1,0 +1,21 @@
+<clinica-header pageName="Novo serviço"></clinica-header>
+
+<ion-content>
+
+    <clinica-sub-header 
+        [showAvatar]="false" 
+        logoPosition="center"
+    ></clinica-sub-header>
+
+    <br>
+    <clinica-title-content title="Preencha os dados abaixo"></clinica-title-content>
+
+    <div class="ion-padding">
+        <clinica-form-specialty 
+            [createdForm]="specialtyForm"
+            (formCompleted)="register($event)"
+            actionButton="Cadastrar"
+        ></clinica-form-specialty>
+    </div>
+
+</ion-content>

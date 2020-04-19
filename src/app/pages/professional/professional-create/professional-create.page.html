@@ -1,0 +1,108 @@
+<clinica-header pageName="Novo profissional"></clinica-header>
+
+<ion-content>
+
+    <clinica-sub-header 
+        [showAvatar]="false" 
+        logoPosition="center"
+    ></clinica-sub-header>
+
+    <br>
+    <clinica-title-content title="Cadastro de profissional"></clinica-title-content>
+
+    <ion-searchbar 
+        class="ion-padding" 
+        placeholder="QUAL O NOME DO USUÁRIO ?"
+        (ionChange)="findUsers($event.target.value)"
+        debounce="500"
+    ></ion-searchbar>
+
+    <ion-row class="ion-padding">
+        
+        <ion-col size="6" *ngIf="! hasUserSelected()">
+            <div class="ion-text-start">
+                <ion-label class="title-text ion-text-uppercase ion-text-wrap" *ngIf="users.length">Selecione o usuário</ion-label>
+                <ion-card *ngFor="let user of users" style="margin-left:0" (click)="selectUser(user.id)">
+                    <div class="ion-activatable ripple-parent">
+                        <ion-card-content class="ion-text-center">
+                            {{user.name}}
+                        </ion-card-content>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                </ion-card>
+            </div>
+        </ion-col>
+
+        <ion-col size="6" *ngIf="hasUserSelected()">
+            <div class="ion-text-start">
+                <ion-label class="title-text ion-text-uppercase ion-text-wrap">Selecione o serviço</ion-label>
+                <ion-card 
+                    *ngFor="let specialty of specialties" 
+                    style="margin-left:0"
+                    (click)="selectSpecialty(specialty)"
+                >
+                    <div class="ion-activatable ripple-parent">
+                        <ion-card-content class="ion-text-center">
+                            {{specialty.name}}
+                        </ion-card-content>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                </ion-card>
+            </div>
+        </ion-col>
+
+        <ion-col size="6" *ngIf="hasUserSelected()">
+            <div class="ion-text-end">
+                <ion-label class="title-text ion-text-uppercase ion-text-wrap">Resumo</ion-label>
+                <ion-card style="margin-right:0" *ngIf="user">
+                    <div class="ion-activatable ripple-parent">
+                        <ion-card-content class="ion-text-center">
+                            {{user.name}}
+                            <ul class="ion-text-start" *ngIf="specialtiesSelected.length">
+                                <li *ngFor="let specialty of specialtiesSelected">{{specialty.name}}</li>
+                            </ul>
+                        </ion-card-content>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                </ion-card>
+            </div>
+            
+            <div class="ion-text-center" *ngIf="user">
+                <ion-col>
+                    <ion-button 
+                        color="warning" 
+                        fill="outline"
+                        size="small"
+                        *ngIf="specialtiesSelected.length"
+                        (click)="removeSpecialtiesSelected()"
+                    >
+                        Remover serviços
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button 
+                        color="danger" 
+                        fill="outline"
+                        size="small"
+                        (click)="cleanAll()"
+                    >
+                        Limpar cadastro
+                    </ion-button>
+                </ion-col>
+            </div>
+        </ion-col>
+    </ion-row>
+    
+    <div class="ion-text-center marginT-2">
+        <ion-button 
+            *ngIf="specialtiesSelected.length"
+            type="submit" 
+            fill="outline" 
+            color="clinica-secondary"
+            (click)="register()"
+        >
+            Cadastrar profissional
+        </ion-button>
+    </div>
+
+</ion-content>

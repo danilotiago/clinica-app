@@ -1,10 +1,11 @@
 <ion-list>
   <ion-row>
     <ion-col *ngFor="let item of serviceItens">
-      <ion-card class="item-menu">
+      <ion-card class="item-menu" (click)="clicked(item)" class="ion-activatable ripple-parent">
         <div class="ion-text-center">
           <img class="item-menu-img" [src]="item.logo">
           <ion-card-content class="item-text">{{item.name}}</ion-card-content>
+          <ion-ripple-effect></ion-ripple-effect>
         </div>
       </ion-card>
     </ion-col>
