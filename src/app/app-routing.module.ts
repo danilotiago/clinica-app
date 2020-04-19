@@ -19,6 +19,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/specialty/specialty.module').then( m => m.SpecialtyPageModule)
     },
     {
+        path: 'professionals',
+        loadChildren: () => import('./pages/professional/professional.module').then( m => m.ProfessionalPageModule)
+    },
+    {
         path: '',
         redirectTo: 'login',
         pathMatch: 'full'

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
 import { convertIdToSendToAPI } from '../utils/convertions';
+import { map } from 'rxjs/operators';
 
 const API_URL: string = environment.API_URL;
 
@@ -15,6 +16,14 @@ export class UserService {
   constructor(
     private http: HttpClient
   ) { }
+
+  getAllUsers(like: String): Observable<User[]> {
+    return this.http
+    .get<User[]>(`${API_URL}/users?like=${like}`)
+    .pipe(map(json => json.map(specialtyData => {
+      return (new User()).fromJson(specialtyData)
+    })));
+  }
 
   save(newUser: User): Observable<any> {
     newUser = this.formatObjectToSendToApi(newUser);
