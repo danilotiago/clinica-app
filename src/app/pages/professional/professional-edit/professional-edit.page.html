@@ -1,4 +1,4 @@
-<clinica-header pageName="Editar serviço"></clinica-header>
+<clinica-header pageName="Editar profissional"></clinica-header>
 
 <ion-content>
 
@@ -6,16 +6,71 @@
         [showAvatar]="false" 
         logoPosition="center"
     ></clinica-sub-header>
-
     <br>
-    <clinica-title-content title="Preencha os dados abaixo"></clinica-title-content>
+    <clinica-title-content title="Edição de profissional"></clinica-title-content>
 
-    <div class="ion-padding">
-        <clinica-form-professional 
-            [createdForm]="professionalForm"
-            (formCompleted)="edit($event)"
-            actionButton="Editar"
-        ></clinica-form-professional>
+    <ion-row class="ion-padding">
+
+        <ion-col size="6" *ngIf="hasUserSelected()">
+            <div class="ion-text-start">
+                <ion-label class="title-text ion-text-uppercase ion-text-wrap">Selecione o serviço</ion-label>
+                <ion-card 
+                    *ngFor="let specialty of specialties" 
+                    style="margin-left:0"
+                    (click)="selectSpecialty(specialty)"
+                >
+                    <div class="ion-activatable ripple-parent">
+                        <ion-card-content class="ion-text-center">
+                            {{specialty.name}}
+                        </ion-card-content>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                </ion-card>
+            </div>
+        </ion-col>
+
+        <ion-col size="6" *ngIf="hasUserSelected()">
+            <div class="ion-text-end">
+                <ion-label class="title-text ion-text-uppercase ion-text-wrap">Resumo</ion-label>
+                <ion-card style="margin-right:0" *ngIf="user">
+                    <div class="ion-activatable ripple-parent">
+                        <ion-card-content class="ion-text-center">
+                            {{user.name}}
+                            <ul class="ion-text-start" *ngIf="specialtiesSelected.length">
+                                <li *ngFor="let specialty of specialtiesSelected">{{specialty.name}}</li>
+                            </ul>
+                        </ion-card-content>
+                        <ion-ripple-effect></ion-ripple-effect>
+                    </div>
+                </ion-card>
+            </div>
+            
+            <div class="ion-text-center" *ngIf="user">
+                <ion-col>
+                    <ion-button 
+                        color="warning" 
+                        fill="outline"
+                        size="small"
+                        *ngIf="specialtiesSelected.length"
+                        (click)="removeSpecialtiesSelected()"
+                    >
+                        Remover serviços
+                    </ion-button>
+                </ion-col>
+            </div>
+        </ion-col>
+    </ion-row>
+    
+    <div class="ion-text-center marginT-2">
+        <ion-button 
+            *ngIf="specialtiesSelected.length"
+            type="submit" 
+            fill="outline" 
+            color="clinica-secondary"
+            (click)="edit()"
+        >
+            Editar profissional
+        </ion-button>
     </div>
 
 </ion-content>

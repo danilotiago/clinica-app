@@ -29,43 +29,7 @@ export class ProfessionalPage implements OnInit {
     });
   }
 
-  private remove(professional: Professional) {
-    this.service.remove(professional)
-    .subscribe(async () => {
-      const alert = await this.toastr.create({
-        message: 'Perfil de profissional removido!',
-        duration: 4000,
-        position: 'bottom',
-        color: 'clinica-primary'
-      });
-      alert.present();
-      
-      this.professionals = this.professionals.filter(item => item.id != professional.id);
-      
-      }, async err => {
-        if (err.status === 400) {
-          const alert = await this.toastr.create({
-              message: 'Ops! Erro de integridade referencial.',
-              duration: 4000,
-              position: 'bottom',
-              color: 'clinica-secondary'
-          });
-          alert.present();
-      } else {
-          console.log(err);
-
-          const alert = await this.toastr.create({
-              message: 'Desculpe! Estamos com problemas internos, mas nossa equipe já está trabalhando para resolver.',
-              duration: 4000,
-              position: 'bottom',
-          });
-          alert.present();
-      }
-    });
-  }
-
-  async clicked(item: ServiceItem) {
-    const professional: Professional = (new Professional).fromObject(item);
+  async clicked(professional: Professional) {
     
     const actionSheet = await this.actionSheet.create({
       header: 'Profissionais',
@@ -107,5 +71,40 @@ export class ProfessionalPage implements OnInit {
       ]
     });
     await alert.present();
+  }
+
+  private remove(professional: Professional) {
+    this.service.remove(professional)
+    .subscribe(async () => {
+      const alert = await this.toastr.create({
+        message: 'Perfil de profissional removido!',
+        duration: 4000,
+        position: 'bottom',
+        color: 'clinica-primary'
+      });
+      alert.present();
+      
+      this.professionals = this.professionals.filter(item => item.id != professional.id);
+      
+      }, async err => {
+        if (err.status === 400) {
+          const alert = await this.toastr.create({
+              message: 'Ops! Erro de integridade referencial.',
+              duration: 4000,
+              position: 'bottom',
+              color: 'clinica-secondary'
+          });
+          alert.present();
+      } else {
+          console.log(err);
+
+          const alert = await this.toastr.create({
+              message: 'Desculpe! Estamos com problemas internos, mas nossa equipe já está trabalhando para resolver.',
+              duration: 4000,
+              position: 'bottom',
+          });
+          alert.present();
+      }
+    });
   }
 }

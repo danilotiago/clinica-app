@@ -19,7 +19,11 @@
   <clinica-title-content title="Profissionais"></clinica-title-content>
 
   <ion-list>
-    <ion-item *ngFor="let professional of professionals">
+    <ion-item 
+      *ngFor="let professional of professionals"
+      class="ion-activatable ripple-parent"
+      (click)="clicked(professional)"
+    >
       <ion-label>
         <h2>{{ professional.user.name }}</h2>
         <p> 
@@ -32,6 +36,7 @@
           </ion-badge>
         </p>
       </ion-label>
+      <ion-ripple-effect></ion-ripple-effect>
     </ion-item>
   </ion-list>
 

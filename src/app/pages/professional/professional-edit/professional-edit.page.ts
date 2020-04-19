@@ -4,6 +4,9 @@ import { Professional } from 'src/app/shared/models/Professional.model';
 import { ProfessionalService } from 'src/app/shared/services/professional.service';
 import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/shared/models/user.model';
+import { SpecialtyService } from 'src/app/shared/services/specialty.service';
+import { Specialty } from 'src/app/shared/models/Specialty.model';
 
 @Component({
   selector: 'app-professional-edit',
@@ -14,10 +17,13 @@ export class ProfessionalEditPage implements OnInit {
 
   professionalForm: FormGroup;
   professional: Professional;
+  user: User;
+  specialties: Specialty[];
+  specialtiesSelected: Specialty[];
 
   constructor(
-    private formBuilder: FormBuilder,
     private service: ProfessionalService,
+    private specialtyService: SpecialtyService,
     private toastr: ToastController,
     private router: Router,
     private activatedRoute: ActivatedRoute
@@ -25,17 +31,17 @@ export class ProfessionalEditPage implements OnInit {
 
   ngOnInit() {
     this.professional = this.activatedRoute.snapshot.data.professional;
-    this.editForm();
+    this.user         = this.professional.user;
+    this.specialtiesSelected = this.professional.specialties;
+
+    this.specialtyService.getAllSpecialties()
+      .subscribe(specialties => this.specialties = specialties);
   }
 
-  private editForm() {
-    this.professionalForm = this.formBuilder.group({ });
-  }
-
-  edit(editProfessional: Professional) {
-    editProfessional.id    = this.professional.id;
-
-    this.service.edit(editProfessional.id, editProfessional)
+  edit() {
+    this.professional.specialties = this.specialtiesSelected;
+    
+    this.service.edit(this.professional.id, this.professional)
       .subscribe(async () => {
         const alert = await this.toastr.create({
           message: 'Profissional editado!',
@@ -69,4 +75,21 @@ export class ProfessionalEditPage implements OnInit {
     });
   }
 
+  selectSpecialty(specialty: Specialty) {
+    if (this.specialtyAlreadySelected(specialty)) return;
+
+    this.specialtiesSelected.push(specialty);
+  }
+
+  hasUserSelected() {
+    return this.user ? true : false;
+  }
+
+  removeSpecialtiesSelected() {
+    this.specialtiesSelected = [];
+  }
+
+  private specialtyAlreadySelected(specialty: Specialty) {
+    return this.specialtiesSelected.find(item => item.id == specialty.id);
+  }
 }
