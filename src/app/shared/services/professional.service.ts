@@ -31,6 +31,14 @@ export class ProfessionalService {
       );
   }
 
+  getAllProfessionalsBySpecialty(specialtyId: String): Observable<Professional[]> {
+    return this.http  
+      .get<Professional[]>(`${API_URL}/professionals?specialtyId=${specialtyId}`)
+      .pipe(map(json => json.map(professionalData => {
+        return (new Professional()).fromJson(professionalData)
+      })));
+  }
+
   save(professional: Professional): Observable<any> {
     const specialtiesIds: string[] = professional.specialties
       .map(specialty => specialty.id);

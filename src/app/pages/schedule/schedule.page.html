@@ -3,12 +3,17 @@
     <clinica-sub-header [showAvatar]="false" logoPosition="center"></clinica-sub-header>
   </div>
   <ion-slides class="marginT-5" [options]="slideOpts">
+    
     <ion-slide>
       <div class="slide full-width">
         <clinica-title-content title="Selecionar Serviço"></clinica-title-content>
-        <clinica-services-list (click)="nextSlide()" [serviceItens]="serviceItens"></clinica-services-list>
+        <clinica-services-list 
+          (clicked)="selectSpecialty($event)"
+          [serviceItens]="serviceItens"
+        ></clinica-services-list>
       </div>
     </ion-slide>
+
     <ion-slide>
       <div class="slide full-width">
         <clinica-title-content title="Selecionar Procedimento"></clinica-title-content>
@@ -20,10 +25,11 @@
         </ion-list>
       </div>
     </ion-slide>
+
     <ion-slide>
       <div class=" slide full-width">
         <clinica-title-content title="Selecionar Profissional"></clinica-title-content>
-        <ion-radio-group>
+        <ion-radio-group (ionChange)="selectProfessional($event.target.value)">
           <ion-list>
             <ion-item *ngFor="let item of professionalItems">
               <ion-radio color="clinica-secondary" slot="start" value="{{ item.id }}" class="mr-1">
@@ -34,45 +40,55 @@
         </ion-radio-group>
       </div>
     </ion-slide>
+
     <ion-slide>
       <div class="full-width">
         <clinica-title-content title="Selecionar Local de Consulta"></clinica-title-content>
         <div class="mt-2">
-          <ion-radio-group value="1">
-            <ion-radio color="clinica-secondary" class="mr-1" slot="location" value="1"></ion-radio>
+          <ion-radio-group (ionChange)="serviceMode = $event.target.value">
+            <ion-radio color="clinica-secondary" class="mr-1" slot="location" value="clinica"></ion-radio>
             <ion-label class="mr-2">Clínica</ion-label>
 
-            <ion-radio color="clinica-secondary" class="mr-1" slot="location" value="2"></ion-radio>
+            <ion-radio color="clinica-secondary" class="mr-1" slot="location" value="residencia"></ion-radio>
             <ion-label>Residência</ion-label>
           </ion-radio-group>
         </div>
       </div>
     </ion-slide>
+
     <ion-slide>
       <div class="full-width">
         <clinica-title-content title="Selecionar Data"></clinica-title-content>
-        <ion-calendar color="danger" [(ngModel)]="date" [options]="calendarOpts" [format]="'DD-MM-YYYY'"></ion-calendar>
+        <ion-calendar 
+          color="danger" 
+          [(ngModel)]="date" 
+          [options]="calendarOpts"
+          (change)="getHours()"
+        ></ion-calendar>
       </div>
     </ion-slide>
+
     <ion-slide>
       <div class="full-width">
         <clinica-title-content title="Selecionar Hora"></clinica-title-content>
-        <ion-radio-group>
+        <ion-radio-group (ionChange)="selectHour($event.target.value)">
           <ion-list>
-            <ion-item *ngFor="let item of hourItems">
-              <ion-radio color="clinica-secondary" class="mr-1" slot="start" value="{{ item.id }}"></ion-radio>
-              <ion-label>{{ item.start }} às {{ item.end }}</ion-label>
+            <ion-item *ngFor="let hour of hours">
+              <ion-radio color="clinica-secondary" class="mr-1" slot="start" [value]="hour.hour"></ion-radio>
+              <ion-label>{{ hour.hour }}</ion-label>
             </ion-item>
           </ion-list>
         </ion-radio-group>
       </div>
     </ion-slide>
+
     <ion-slide>
       <div class="full-width">
         <clinica-title-content title="Observações dos sintomas"></clinica-title-content>
-        <ion-textarea color="dark" rows="6"></ion-textarea>
+        <ion-textarea color="dark" rows="6" (ionChange)="observations = $event.target.value" ></ion-textarea>
       </div>
     </ion-slide>
+
   </ion-slides>
   <ion-fab-button color="clinica-secondary" class="pull-left" (click)="prevSlide()" *ngIf="! isFirstSlide()">
     <ion-icon name="arrow-back"></ion-icon>
@@ -80,7 +96,12 @@
   <ion-fab-button color="clinica-secondary" class="pull-right" (click)="nextSlide()" *ngIf="! isFirstAndLastSlide()">
     <ion-icon name="arrow-forward"></ion-icon>
   </ion-fab-button>
-  <ion-button color="clinica-secondary" class="pull-right" *ngIf="isLastSlide()">
+  <ion-button 
+    color="clinica-secondary" 
+    class="pull-right" 
+    *ngIf="isLastSlide()"
+    (click)="resume()"
+  >
     Solicitar Agendamento
   </ion-button>
 </ion-content>
