@@ -36,7 +36,7 @@ export class AuthService {
             this.userService.setUser(user);
 
             console.log(`User ${(<any>body).id} with name ${(<any>body).name} 
-              authenticated with token ${(<any>body).accessToken}`);
+              authenticated`);
         }));
   }
 }

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Hour } from '../models/hour.model';
 import { map } from 'rxjs/operators';
+import { Schedule } from '../models/Schedule.model';
 
 const API_URL: string = environment.API_URL;
 
@@ -20,5 +21,17 @@ export class ScheduleService {
             .pipe(map(json => json.map(hourData => {
                 return (new Hour()).fromJson(hourData)
             })));
+    }
+
+    save(scheduled: Schedule): Observable<any> {
+
+    const payload: any = {...scheduled};
+
+    payload.patient = payload.patient.id;
+    payload.professional = payload.professional.id;
+    payload.specialty = payload.specialty.id;
+
+      return this.http
+      .post(`${API_URL}/schedules`, payload);
     }
 }

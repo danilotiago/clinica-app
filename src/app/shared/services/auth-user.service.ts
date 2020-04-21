@@ -24,7 +24,7 @@ export class AuthUserService {
     });
   }
 
-  setUser(user: User): void {
+  setUser(user: User) {
     this.user = user;
     this.storeUser();
     this.notify();
@@ -34,8 +34,8 @@ export class AuthUserService {
     return this.userSubject.asObservable();
   }
 
-  logout() {
-    this.removeUser().then(() => {
+  async logout() {
+    await this.removeUser().then(() => {
       this.tokenService.removeToken().then(() => {
         this.userSubject.next(null);
       });
@@ -50,7 +50,7 @@ export class AuthUserService {
     this.storage.set(KEY, this.user);
   }
 
-  private getUserFromStorage(): Promise<User> {
+  getUserFromStorage(): Promise<User> {
     return this.storage.get(KEY);
   }
 

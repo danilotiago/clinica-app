@@ -1,15 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, IonItem, IonLabel, IonRadioGroup, IonRadio } from '@ionic/angular';
+import { IonSlides, IonItem, IonLabel, IonRadioGroup, IonRadio, ToastController } from '@ionic/angular';
 import { ServiceItem } from 'src/app/shared/services-list/service-item.interface';
 import { SwiperOptions } from 'swiper';
 import { CalendarComponentOptions } from 'ion2-calendar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Specialty } from 'src/app/shared/models/Specialty.model';
 import { ProfessionalService } from 'src/app/shared/services/professional.service';
 import { Professional } from 'src/app/shared/models/Professional.model';
 import { ScheduleService } from 'src/app/shared/services/schedule.service';
 import { HourService } from 'src/app/shared/services/hour.service';
 import { Hour } from 'src/app/shared/models/hour.model';
+import { AuthUserService } from 'src/app/shared/services/auth-user.service';
+import { User } from 'src/app/shared/models/user.model';
+import { Schedule } from 'src/app/shared/models/Schedule.model';
 
 @Component({
     selector: 'clinica-schedule',
@@ -33,6 +36,7 @@ export class SchedulePage implements OnInit {
     
     hours: Hour[] = [];
 
+    pacient: User;
     specialtySelected: Specialty;
     proceduresSelected: String[] = [];
     professionalSelected: Professional;
@@ -44,14 +48,19 @@ export class SchedulePage implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private professionalService: ProfessionalService,
-        private service: ScheduleService
+        private service: ScheduleService,
+        private authUserService: AuthUserService,
+        private toastr: ToastController,
+        private router: Router
     ) { }
 
-    ngOnInit() {
+    async ngOnInit() {
         this.route.data.subscribe(param => {
             this.specialties = param['specialties'];
             this.renderServiceItensWithSpecialties(param['specialties']);
         });
+
+        this.pacient = await this.authUserService.getUserFromStorage();
     }
 
     selectSpecialty(specialtyItem: ServiceItem) {
@@ -95,36 +104,51 @@ export class SchedulePage implements OnInit {
     }
 
     resume() {
-
         this.defineSelectedProcedures();
 
-        console.log("==========");
-        console.log(this.specialtySelected);
-        console.log("==========");
+        const schedule: Schedule = new Schedule();
 
-        console.log("==========");
-        console.log(this.proceduresSelected);
-        console.log("==========");
+        schedule.patient = this.pacient;
+        schedule.professional = this.professionalSelected;
+        schedule.professional = this.professionalSelected;
+        schedule.specialty = this.specialtySelected;
+        schedule.procedures = this.proceduresSelected;
+        schedule.observations = this.observations;
+        schedule.requestDate = this.date;
+        schedule.requestHour = this.hourSelected;
 
-        console.log("==========");
-        console.log(this.professionalSelected);
-        console.log("==========");
-
-        console.log("==========");
-        console.log(this.serviceMode);
-        console.log("==========");
-
-        console.log("==========");
-        console.log(this.date);
-        console.log("==========");
-
-        console.log("==========");
-        console.log(this.hourSelected);
-        console.log("==========");
-
-        console.log("==========");
-        console.log(this.observations);
-        console.log("==========");
+        this.service.save(schedule)
+            .subscribe(async () => {
+                const alert = await this.toastr.create({
+                  message: 'Agendamento solicitado!',
+                  duration: 4000,
+                  position: 'bottom',
+                  color: 'clinica-primary'
+                });
+                alert.present();
+        
+                this.router.navigate(['/home/client']);
+        
+              }, async err => {
+                if (err.status === 400) {
+                  const alert = await this.toastr.create({
+                      message: 'Ops! Erro de integridade referencial.',
+                      duration: 4000,
+                      position: 'bottom',
+                      color: 'clinica-secondary'
+                  });
+                  alert.present();
+              } else {
+                  console.log(err);
+        
+                  const alert = await this.toastr.create({
+                      message: 'Desculpe! Estamos com problemas internos, mas nossa equipe já está trabalhando para resolver.',
+                      duration: 4000,
+                      position: 'bottom',
+                  });
+                  alert.present();
+              }
+        });
     }
 
     private defineSelectedProcedures(): void {
