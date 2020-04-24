@@ -9,6 +9,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomeClientPage } from './home-client.page';
 import { HomeClientRoutingModule } from './home-client.routing.module';
+import { TitleContentModule } from 'src/app/shared/title-content/title-content.module';
+import { TimelineModule } from 'src/app/shared/timeline/timeline.module';
 
 @NgModule({
   imports: [
@@ -19,7 +21,9 @@ import { HomeClientRoutingModule } from './home-client.routing.module';
     HeaderModule,
     SubHeaderModule,
     ServicesListModule,
-    RememberAlertModule
+    RememberAlertModule,
+    TitleContentModule,
+    TimelineModule
   ],
   declarations: [HomeClientPage]
 })
